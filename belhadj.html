@@ -106,15 +106,15 @@ nav a:hover { color: var(--goldl); }
 .hero-badge {
   display: inline-block;
   font-family: 'Noto Naskh Arabic', serif;
-  font-size: 11px; letter-spacing: .14em; color: var(--goldl);
-  border: 1px solid var(--gold); padding: 5px 14px;
+  font-size: 10px; letter-spacing: .14em; color: var(--goldl);
+  border: 1px solid rgba(212,170,58,.4); padding: 3px 10px;
   margin-bottom: 26px; border-radius: 2px; text-transform: uppercase;
 }
 .hero h1 {
   font-family: 'Scheherazade New', serif;
   font-size: clamp(2.3rem, 4.8vw, 3.7rem);
   font-weight: 700; color: var(--parch);
-  line-height: 1.32; margin-bottom: 18px;
+  line-height: 1.5; margin-bottom: 18px;
 }
 .hero h1 em { color: var(--goldl); font-style: normal; }
 .hero-sub {
@@ -375,20 +375,13 @@ footer {
 
   <div class="hero-content">
     <span class="hero-badge">قراءة منهجية · فكر إسلامي</span>
-    <h1 class="hero">
-      علي بلحاج<br>
-      <em>بين حرارة الإيمان وفقه الميزان</em>
+    <h1 class="hero" style="display:flex;flex-direction:column;gap:12px;">
+      <span style="color:var(--parch);">بين حرارة الإيمان</span>
+      <span style="color:var(--goldl);">وفقه الميزان</span>
     </h1>
     <p class="hero-sub">قراءة علمية منهجية على ضوء أصول أهل السنة والجماعة — لا استفزازًا ولا مجاملة</p>
     <div class="hero-meta">
-    <span class="hero-date">شوال 1447 هـ · مارس 2026</span>
-      <div class="author-pill">
-        <div class="avatar">ع</div>
-        <div>
-          <div class="author-name">عبد الرفيق ح.</div>
-          <div class="author-role">كاتب وباحث في الفكر الإسلامي</div>
-        </div>
-      </div>
+      <span class="hero-date">شوال 1447 هـ · مارس 2026</span>
     </div>
   </div>
   <div class="hero-line"></div>
