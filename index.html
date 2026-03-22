@@ -3,359 +3,511 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>علي بلحاج — بين حرارة الإيمان وفقه الميزان</title>
+<title>بحر النون — فكر · تحليل · موقف</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">
 <style>
 :root {
-  --ink:     #1a1208;
-  --cream:   #faf6ec;
-  --parch:   #f5efe0;
-  --gold:    #b8860b;
-  --goldl:   #d4aa3a;
-  --rust:    #8b3a2a;
-  --sage:    #4a5e4a;
-  --border:  #d4b896;
-  --muted:   #6b5c45;
-  --shadow:  rgba(26,18,8,.11);
-  --white:   #ffffff;
+  --ink:    #0d0d0d;
+  --deep:   #0a1628;
+  --ocean:  #0f2444;
+  --wave:   #1a3a6e;
+  --gold:   #c9a84c;
+  --goldl:  #e6c96e;
+  --silver: #a8b8c8;
+  --cream:  #f8f4ee;
+  --white:  #ffffff;
+  --border: #1e3a5f;
+  --muted:  #7a8a9a;
+  --shadow: rgba(0,0,0,0.35);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Amiri', Georgia, serif;
-  background: #fff;
-  color: #111;
+  background: var(--deep);
+  color: var(--cream);
   direction: rtl;
   overflow-x: hidden;
-  font-size: 20px;
-  line-height: 2.2;
-  font-variant-numeric: tabular-nums;
-  -webkit-font-feature-settings: "lnum";
+  font-size: 18px;
+  line-height: 1.9;
 }
-/* forcer chiffres arabes orientaux */
-* { font-feature-settings: "lnum" 0; }
 
-/* ─── scrollbar ─── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--deep); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-/* ─── progress bar ─── */
-#progress {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 3px; width: 0%;
-  background: linear-gradient(90deg, var(--gold), var(--goldl));
-  z-index: 400; transition: width .1s linear;
-}
-
-/* ─── keyframes ─── */
-@keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes fadeUp    { from { transform: translateY(44px);  opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes spin      { to { transform: rotate(360deg); } }
-@keyframes shimmer   { 0%,100%{opacity:.06} 50%{opacity:.14} }
-@keyframes revealIn  { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+/* ─── animations ─── */
+@keyframes fadeDown  { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp    { from { opacity:0; transform:translateY(50px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn    { from { opacity:0; } to { opacity:1; } }
+@keyframes spin      { to { transform:rotate(360deg); } }
+@keyframes wavePulse { 0%,100%{transform:scaleX(1) translateY(0)} 50%{transform:scaleX(1.02) translateY(-4px)} }
+@keyframes float     { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes shimmer   { 0%,100%{opacity:.04} 50%{opacity:.10} }
+@keyframes revealIn  { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
 /* ─── header ─── */
 header {
-  background: var(--ink);
-  padding: 13px 40px;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(12px);
+  padding: 16px 48px;
   display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 3px solid var(--gold);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
   position: sticky; top: 0; z-index: 300;
-  animation: slideDown .6s ease both;
+  animation: fadeDown .7s ease both;
 }
-.logo {
+.logo-wrap { display: flex; flex-direction: column; align-items: flex-end; }
+.logo-main {
   font-family: 'Scheherazade New', serif;
-  font-size: 21px; color: var(--goldl); text-decoration: none;
+  font-size: 28px; font-weight: 700;
+  color: var(--goldl);
+  letter-spacing: .02em; line-height: 1;
 }
-nav { display: flex; gap: 26px; }
+.logo-sub {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; color: var(--muted);
+  letter-spacing: .1em; margin-top: 2px;
+}
+nav { display: flex; gap: 28px; align-items: center; }
 nav a {
   font-family: 'Noto Naskh Arabic', serif;
-  font-size: 13px; color: #c8b99a; text-decoration: none;
-  transition: color .25s;
+  font-size: 13px; color: var(--silver);
+  text-decoration: none; transition: color .25s;
 }
 nav a:hover { color: var(--goldl); }
+.nav-divider { width: 1px; height: 18px; background: var(--border); }
 
-/* ─── hero ─── */
-.hero {
-  background: var(--ink);
-  min-height: 42vh;
-  display: flex; align-items: flex-end;
-  position: relative; overflow: hidden;
+/* ── HERO TYPEWRITER ── */
+.hero-typewriter {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 13px; letter-spacing: .12em;
+  color: var(--gold); margin-bottom: 20px;
+  min-height: 20px;
 }
+.cursor {
+  display: inline-block; width: 2px; height: 14px;
+  background: var(--gold); margin-right: 2px;
+  animation: blink .7s infinite;
+  vertical-align: middle;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── HERO STATS ── */
+.hero-stats {
+  display: flex; gap: 40px; justify-content: center;
+  margin-top: 36px; padding-top: 28px;
+  border-top: 1px solid rgba(201,168,76,.15);
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Scheherazade New', serif;
+  font-size: 2rem; font-weight: 700;
+  color: var(--goldl); line-height: 1;
+  display: block;
+}
+.stat-label {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; letter-spacing: .1em;
+  color: var(--muted); margin-top: 4px;
+  display: block;
+}
+.stat-sep {
+  width: 1px; background: rgba(201,168,76,.15);
+  align-self: stretch;
+}
+
+/* ── SCROLL LINE ── */
+.scroll-line-indicator {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+  cursor: pointer;
+}
+.scroll-line-track {
+  width: 1px; height: 60px;
+  background: rgba(201,168,76,.15);
+  position: relative; overflow: hidden;
+  border-radius: 1px;
+}
+.scroll-line-fill {
+  position: absolute; top: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, transparent, var(--goldl), transparent);
+  animation: lineDown 2s ease-in-out infinite;
+}
+@keyframes lineDown {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
+.hero {
+  min-height: 40vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  text-align: center;
+  padding: 28px 24px 36px;
+}
+
+/* deep sea background */
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 30% 40%, #2d1f0e, transparent 70%),
-    radial-gradient(ellipse 50% 80% at 80% 20%, #3d1a0a, transparent 60%),
-    linear-gradient(160deg, #0f0a04, #1a1208 40%, #2c1810);
+    radial-gradient(ellipse 80% 60% at 50% 30%, #0f2a50 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, #071830 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 80% 60%, #0a1e3a 0%, transparent 50%),
+    linear-gradient(180deg, #050e1c 0%, #0a1628 40%, #071422 100%);
 }
-.hero-ornament {
-  position: absolute; top: 44px; right: 56px;
-  width: 200px; height: 200px; opacity: .07;
-  animation: spin 60s linear infinite;
+
+/* animated waves */
+.waves {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 100px; overflow: hidden; line-height: 0;
 }
+.waves svg {
+  position: absolute; bottom: 0;
+  width: 200%; height: 100%;
+}
+.wave1-path { animation: waveMove 6s linear infinite; }
+.wave2-path { animation: waveMove 9s linear infinite reverse; }
+.wave3-path { animation: waveMove 12s linear infinite 1s; }
+@keyframes waveMove {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* stars / bubbles */
+.bubbles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.bubble {
+  position: absolute; border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  animation: float linear infinite;
+}
+
+/* big NUN letter */
+.nun-bg {
+  position: absolute;
+  font-family: 'Scheherazade New', serif;
+  font-size: 420px; font-weight: 700;
+  color: var(--gold); opacity: .025;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -52%);
+  pointer-events: none; user-select: none;
+  animation: shimmer 5s ease infinite;
+  line-height: 1;
+}
+
+/* ornament ring */
+.ornament {
+  position: absolute; top: 60px; left: 60px;
+  width: 160px; height: 160px; opacity: .06;
+  animation: spin 80s linear infinite;
+}
+.ornament2 {
+  position: absolute; bottom: 140px; right: 80px;
+  width: 100px; height: 100px; opacity: .05;
+  animation: spin 60s linear infinite reverse;
+}
+
 .hero-content {
   position: relative; z-index: 2;
-  padding: 32px 72px 40px 40px;
-  max-width: 840px;
-  animation: fadeUp 1s .3s ease both;
+  animation: fadeUp 1.2s .2s ease both;
 }
 .hero-badge {
   display: inline-block;
   font-family: 'Noto Naskh Arabic', serif;
-  font-size: 11px; letter-spacing: .14em; color: var(--goldl);
-  border: 1px solid var(--gold); padding: 5px 14px;
-  margin-bottom: 26px; border-radius: 2px; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .15em;
+  color: var(--gold); border: 1px solid rgba(201,168,76,.4);
+  padding: 5px 16px; border-radius: 20px; margin-bottom: 32px;
+  text-transform: uppercase;
+  background: rgba(201,168,76,.05);
 }
-.hero h1 {
+.hero-title {
   font-family: 'Scheherazade New', serif;
-  font-size: clamp(2.3rem, 4.8vw, 3.7rem);
-  font-weight: 700; color: var(--parch);
-  line-height: 1.32; margin-bottom: 18px;
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 700; color: var(--white);
+  line-height: .95; margin-bottom: 8px;
+  text-shadow: 0 0 80px rgba(201,168,76,.2);
 }
-.hero h1 em { color: var(--goldl); font-style: normal; }
-.hero-sub {
+.hero-title span { color: var(--goldl); }
+.hero-tagline {
   font-family: 'Amiri', serif;
-  font-size: 1.1rem; color: #a89070;
-  line-height: 1.9; max-width: 580px; margin-bottom: 36px;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--silver); line-height: 1.8;
+  max-width: 600px; margin: 20px auto 40px;
+  font-style: italic;
 }
-.hero-meta { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-.author-pill { display: flex; align-items: center; gap: 12px; }
-.avatar {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--rust));
-  display: flex; align-items: center; justify-content: center;
+.hero-nun-verse {
   font-family: 'Scheherazade New', serif;
-  font-size: 20px; color: #fff; flex-shrink: 0;
+  font-size: 1.6rem; color: rgba(201,168,76,.7);
+  margin-bottom: 48px; direction: rtl;
 }
-.author-name { font-family: 'Noto Naskh Arabic', serif; font-size: 15px; color: var(--parch); font-weight: 700; }
-.author-role { font-size: 12px; color: #7a6a55; }
-.hero-date {
-  font-family: 'Noto Naskh Arabic', serif; font-size: 13px; color: #6a5a45;
-  border-left: 1px solid #3a2e20; padding-left: 28px;
+.hero-nun-ref {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: var(--muted); display: block; margin-top: 6px;
 }
-.hero-line {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+.scroll-hint {
+  position: absolute; bottom: 140px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: fadeIn 2s 1.5s ease both;
 }
-
-/* ─── layout ─── */
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
-.layout {
-  display: grid; grid-template-columns: 1fr 258px;
-  gap: 56px; padding: 64px 0 100px; align-items: start;
-}
-
-/* ─── article ─── */
-.reveal {
-  opacity: 0; transform: translateY(26px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.show { opacity: 1; transform: translateY(0); }
-
-.opening-quote {
-  border-right: 4px solid var(--gold);
-  padding: 22px 26px; margin-bottom: 48px;
-  background: rgba(184,134,11,.05);
-  border-radius: 0 6px 6px 0;
-}
-.opening-quote blockquote {
-  font-family: 'Amiri', serif; font-size: 1.28rem;
-  font-style: italic; color: var(--muted); line-height: 1.9; margin-bottom: 8px;
-}
-.opening-quote cite {
-  font-family: 'Noto Naskh Arabic', serif; font-size: 13px;
-  color: var(--gold); font-style: normal; display: block; text-align: left;
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: float 2s ease-in-out infinite;
 }
 
-.sec { margin-bottom: 54px; }
-.sec-num {
-  font-family: 'Scheherazade New', serif;
-  font-size: 13px; color: var(--gold);
-  letter-spacing: .08em; display: block; margin-bottom: 5px;
+/* ─── SECTIONS ─── */
+.section-wrap {
+  max-width: 1160px; margin: 0 auto; padding: 0 32px;
 }
-.sec-title {
-  font-family: 'Scheherazade New', serif;
-  font-size: 1.85rem; font-weight: 700;
-  color: var(--ink); line-height: 1.4;
-  margin-bottom: 20px; padding-bottom: 14px;
+
+/* about */
+.about {
+  padding: 48px 0 40px;
   border-bottom: 1px solid var(--border);
+}
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: center;
+}
+.about-text {}
+.section-label {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; letter-spacing: .15em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 16px; display: block;
+}
+.section-title {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.35; margin-bottom: 24px;
+}
+.section-title em { color: var(--goldl); font-style: normal; }
+.about p {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem; color: var(--silver);
+  line-height: 2.1; margin-bottom: 18px;
+}
+.about-visual {
+  display: flex; align-items: center; justify-content: center;
   position: relative;
 }
-.sec-title::after {
-  content: ''; position: absolute;
-  bottom: -1px; right: 0;
-  width: 58px; height: 3px; background: var(--gold);
-}
-.sub-label {
-  font-family: 'Noto Naskh Arabic', serif;
-  font-size: 1rem; font-weight: 700; color: var(--rust);
-  margin: 28px 0 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.sub-label::before { content: '◆'; font-size: 8px; color: var(--gold); }
-
-p {
-  font-family: 'Amiri', serif;
-  font-size: 1.18rem; line-height: 2.3;
-  color: #1a1208; margin-bottom: 22px;
-  text-align: justify; hyphens: auto;
-  letter-spacing: 0.01em;
-}
-
-.dropcap::first-letter {
+.big-nun {
   font-family: 'Scheherazade New', serif;
-  font-size: 4.2rem; font-weight: 700;
-  float: right; line-height: .78;
-  margin-left: 10px; margin-top: 7px;
-  color: var(--gold);
+  font-size: 260px; font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,.3);
+  line-height: 1; user-select: none;
+  animation: float 6s ease-in-out infinite;
+}
+.about-ring {
+  position: absolute; width: 300px; height: 300px;
+  border: 1px solid rgba(201,168,76,.1); border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+.about-ring2 {
+  position: absolute; width: 220px; height: 220px;
+  border: 1px solid rgba(201,168,76,.07); border-radius: 50%;
+  animation: spin 20s linear infinite reverse;
 }
 
-/* cards */
-.cards { display: grid; gap: 16px; margin: 20px 0 28px; }
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-right: 4px solid var(--gold);
-  padding: 18px 20px; border-radius: 0 6px 6px 0;
-  box-shadow: 0 2px 12px var(--shadow);
-  transition: transform .25s, box-shadow .25s;
-  cursor: default;
-}
-.card:hover { transform: translateX(-4px); box-shadow: 0 6px 22px var(--shadow); }
-.card-num { font-family: 'Scheherazade New', serif; font-size: 1.5rem; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 4px; }
-.card-title { font-family: 'Noto Naskh Arabic', serif; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-.card p { font-size: 1.05rem; line-height: 2.1; color: #4a3c2a; margin: 0; }
-
-/* highlight box */
-.hbox {
-  background: linear-gradient(135deg, #fdf6e3, #f5ead0);
-  border: 1px solid var(--border); border-right: 4px solid var(--rust);
-  padding: 20px 24px; margin: 18px 0 22px;
-  border-radius: 0 6px 6px 0;
-  font-family: 'Amiri', serif; font-size: 1.1rem;
-  line-height: 2.2; color: #1a1208; font-style: italic;
-}
-
-/* hadith */
-.hadith {
-  text-align: center;
-  font-family: 'Scheherazade New', serif;
-  font-size: 1.42rem; color: var(--sage);
-  line-height: 2.2; padding: 24px 16px; margin: 28px 0;
-  border-top: 1px solid var(--border);
+/* ─── ARTICLES ─── */
+.articles-section { padding: 40px 0 80px; }
+.articles-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 32px; padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
-.hadith-ref {
-  display: block; font-family: 'Noto Naskh Arabic', serif;
-  font-size: 13px; color: var(--gold); margin-top: 8px;
-}
-
-/* conclusion */
-.conclusion {
-  background: var(--ink); color: var(--parch);
-  padding: 48px 44px; border-radius: 8px;
-  position: relative; overflow: hidden; margin-top: 56px;
-}
-.conclusion::before {
-  content: '﷽';
-  position: absolute; top: -28px; left: -18px;
-  font-size: 180px; color: var(--gold); opacity: .04;
-  font-family: 'Scheherazade New', serif; pointer-events: none;
-  animation: shimmer 4s ease infinite;
-}
-.conclusion .sec-title { color: var(--parch); border-color: #3a2e20; }
-.conclusion p { color: #e0d0b8; font-size: 1.15rem; line-height: 2.3; }
-.ayah {
-  text-align: center; font-family: 'Scheherazade New', serif;
-  font-size: 1.45rem; color: var(--goldl); line-height: 2.2;
-  padding: 22px 16px; margin: 24px 0;
-  border-top: 1px solid #3a2e20;
-  border-bottom: 1px solid #3a2e20;
-}
-.ayah-ref { display: block; font-family: 'Noto Naskh Arabic', serif; font-size: 13px; color: #7a6a55; margin-top: 8px; }
-.signature {
-  text-align: left; margin-top: 24px; padding-top: 20px;
-  border-top: 1px solid #3a2e20;
-}
-.sig-name { font-family: 'Scheherazade New', serif; font-size: 1.2rem; color: var(--goldl); display: block; }
-.sig-date { font-family: 'Noto Naskh Arabic', serif; font-size: 12px; color: #5a4a35; margin-top: 4px; display: block; }
-
-/* ─── sidebar ─── */
-.sidebar { position: sticky; top: 80px; }
-.s-card {
-  background: var(--white);
-  border: 1px solid var(--border); border-top: 3px solid var(--gold);
-  padding: 22px 20px; margin-bottom: 20px;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 2px 16px var(--shadow);
-}
-.s-title {
+.articles-count {
   font-family: 'Noto Naskh Arabic', serif;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .1em; color: var(--gold);
-  margin-bottom: 14px; text-transform: uppercase;
+  font-size: 13px; color: var(--muted);
 }
-.toc-item {
-  border-bottom: 1px solid #f0e8d8;
-  padding: 9px 0; cursor: pointer;
-  display: flex; align-items: flex-start; gap: 9px;
-  color: var(--muted); transition: color .2s;
-}
-.toc-item:last-child { border-bottom: none; }
-.toc-item:hover { color: var(--gold); }
-.toc-num { font-family: 'Noto Naskh Arabic', serif; font-size: 11px; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 3px; }
-.toc-label { font-family: 'Amiri', serif; font-size: 15px; line-height: 1.6; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag {
-  background: var(--parch); border: 1px solid var(--border);
-  padding: 4px 12px; border-radius: 20px;
-  font-family: 'Noto Naskh Arabic', serif; font-size: 12px;
-  color: var(--muted); cursor: default;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.tag:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
-.reading-box {
-  background: var(--ink); border: 1px solid #3a2e20;
-  padding: 18px 20px; border-radius: 6px; text-align: center;
-}
-.reading-num { font-family: 'Scheherazade New', serif; font-size: 2rem; color: var(--goldl); font-weight: 700; }
-.reading-lbl { font-family: 'Noto Naskh Arabic', serif; font-size: 12px; color: #7a6a55; margin-top: 3px; }
 
-/* ─── footer ─── */
-footer {
-  background: var(--ink); color: #7a6a55;
-  text-align: center; padding: 36px 20px;
-  font-family: 'Noto Naskh Arabic', serif; font-size: 13px;
+.articles-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.article-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
   border-top: 3px solid var(--gold);
+  border-radius: 0 0 8px 8px;
+  padding: 32px 28px;
+  transition: transform .3s, background .3s, box-shadow .3s;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(24px);
+  animation: revealIn .6s ease forwards;
 }
-.footer-brand { font-family: 'Scheherazade New', serif; font-size: 20px; color: var(--goldl); display: block; margin-bottom: 8px; }
+.article-card:nth-child(1) { animation-delay: .1s; }
+.article-card:nth-child(2) { animation-delay: .2s; }
+.article-card:nth-child(3) { animation-delay: .3s; }
 
-/* ─── responsive ─── */
+.article-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,.04), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.article-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.05); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.article-card:hover::before { opacity: 1; }
+
+.card-category {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; letter-spacing: .1em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 14px; display: block;
+}
+.card-title {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.55rem; font-weight: 700;
+  color: var(--white); line-height: 1.4;
+  margin-bottom: 6px;
+}
+.card-subtitle {
+  font-family: 'Amiri', serif;
+  font-size: 1rem; color: var(--goldl);
+  font-style: italic; margin-bottom: 16px;
+  line-height: 1.6;
+}
+.card-excerpt {
+  font-family: 'Amiri', serif;
+  font-size: 1rem; color: var(--silver);
+  line-height: 1.9; margin-bottom: 24px;
+}
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 18px; border-top: 1px solid var(--border);
+}
+.card-meta {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: var(--muted);
+  display: flex; gap: 14px;
+}
+.card-read {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: var(--gold);
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: gap .25s;
+}
+.card-read:hover { gap: 10px; }
+
+/* coming soon card */
+.card-soon {
+  opacity: 0.4 !important;
+  border-top-color: var(--muted) !important;
+  cursor: default !important;
+}
+.card-soon:hover { transform: none !important; box-shadow: none !important; }
+.soon-badge {
+  display: inline-block;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; color: var(--muted);
+  border: 1px solid var(--muted);
+  padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+/* ─── ABOUT AUTHOR ─── */
+.author-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.author-inner {
+  display: flex; align-items: center; gap: 40px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  padding: 40px 44px; border-radius: 8px;
+  position: relative; overflow: hidden;
+}
+.author-inner::before {
+  content: ''; position: absolute;
+  top: 0; right: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+}
+.author-avatar-big {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #6a2a1a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif;
+  font-size: 40px; color: #fff; flex-shrink: 0;
+  box-shadow: 0 0 30px rgba(201,168,76,.2);
+}
+.author-info {}
+.author-name-big {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.8rem; color: var(--goldl); font-weight: 700;
+  margin-bottom: 6px;
+}
+.author-bio {
+  font-family: 'Amiri', serif;
+  font-size: 1.05rem; color: var(--silver); line-height: 1.9;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #050e1c;
+  border-top: 1px solid rgba(201,168,76,.2);
+  padding: 48px 32px 32px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Scheherazade New', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--goldl); display: block; margin-bottom: 10px;
+}
+.footer-verse {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.2rem; color: rgba(201,168,76,.5);
+  margin-bottom: 24px;
+}
+.footer-copy {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 20px; margin-top: 20px;
+}
+
+/* reveal on scroll */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
 @media (max-width: 860px) {
-  .layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; }
-  .hero-content { padding: 56px 24px 64px; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-visual { display: none; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .author-inner { flex-direction: column; text-align: center; }
+  header { padding: 14px 20px; }
   nav { display: none; }
-  .conclusion { padding: 32px 22px; }
+  .hero-title { font-size: clamp(4rem, 18vw, 7rem); }
 }
 </style>
 </head>
 <body>
 
-<div id="progress"></div>
-
 <!-- HEADER -->
 <header>
-  <a href="#" class="logo">مـنـارة — مجلة الفكر الإسلامي</a>
+  <div class="logo-wrap">
+    <span class="logo-main">بحر النون</span>
+    <span class="logo-sub">فكر · تحليل · موقف</span>
+  </div>
   <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#">مقالات</a>
-    <a href="#">دراسات</a>
-    <a href="#">الكتّاب</a>
+    <a href="#articles">المقالات</a>
+    <div class="nav-divider"></div>
+    <a href="#about">عن الكاتب</a>
+    <div class="nav-divider"></div>
+    <a href="#contact">تواصل</a>
   </nav>
 </header>
 
@@ -363,198 +515,210 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
 
-  <!-- SVG ornament -->
-  <svg class="hero-ornament" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="92" fill="none" stroke="#d4aa3a" stroke-width="1"/>
-    <circle cx="100" cy="100" r="68" fill="none" stroke="#d4aa3a" stroke-width=".5"/>
-    <circle cx="100" cy="100" r="44" fill="none" stroke="#d4aa3a" stroke-width="1"/>
-    <line x1="8"  y1="100" x2="192" y2="100" stroke="#d4aa3a" stroke-width=".5"/>
-    <line x1="100" y1="8"  x2="100" y2="192" stroke="#d4aa3a" stroke-width=".5"/>
-    <line x1="35" y1="35"  x2="165" y2="165" stroke="#d4aa3a" stroke-width=".5"/>
-    <line x1="165" y1="35" x2="35"  y2="165" stroke="#d4aa3a" stroke-width=".5"/>
+  <!-- Bubbles -->
+  <div class="bubbles">
+    <div class="bubble" style="width:6px;height:6px;top:20%;left:15%;animation-duration:8s;animation-delay:0s;"></div>
+    <div class="bubble" style="width:4px;height:4px;top:40%;left:80%;animation-duration:12s;animation-delay:2s;"></div>
+    <div class="bubble" style="width:8px;height:8px;top:70%;left:30%;animation-duration:10s;animation-delay:1s;"></div>
+    <div class="bubble" style="width:3px;height:3px;top:30%;left:60%;animation-duration:7s;animation-delay:3s;"></div>
+    <div class="bubble" style="width:5px;height:5px;top:60%;left:90%;animation-duration:9s;animation-delay:.5s;"></div>
+    <div class="bubble" style="width:7px;height:7px;top:80%;left:50%;animation-duration:11s;animation-delay:4s;"></div>
+  </div>
+
+  <!-- Ornament rings -->
+  <svg class="ornament" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="80" cy="80" r="75" fill="none" stroke="#c9a84c" stroke-width="1"/>
+    <circle cx="80" cy="80" r="55" fill="none" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="5" y1="80" x2="155" y2="80" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="80" y1="5" x2="80" y2="155" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="27" y1="27" x2="133" y2="133" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="133" y1="27" x2="27" y2="133" stroke="#c9a84c" stroke-width=".5"/>
+  </svg>
+  <svg class="ornament2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="#c9a84c" stroke-width="1"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="4" y1="50" x2="96" y2="50" stroke="#c9a84c" stroke-width=".5"/>
+    <line x1="50" y1="4" x2="50" y2="96" stroke="#c9a84c" stroke-width=".5"/>
   </svg>
 
   <div class="hero-content">
-    <span class="hero-badge">قراءة منهجية · فكر إسلامي</span>
-    <h1 class="hero">
-      علي بلحاج<br>
-      <em>بين حرارة الإيمان وفقه الميزان</em>
-    </h1>
-    <p class="hero-sub">قراءة علمية منهجية على ضوء أصول أهل السنة والجماعة — لا استفزازًا ولا مجاملة</p>
-    <div class="hero-meta">
-    <span class="hero-date">شوال 1447 هـ · مارس 2026</span>
-      <div class="author-pill">
-        <div class="avatar">ع</div>
-        <div>
-          <div class="author-name">عبد الرفيق ح.</div>
-          <div class="author-role">كاتب وباحث في الفكر الإسلامي</div>
+    <div class="hero-typewriter"><span id="tw"></span><span class="cursor"></span></div>
+    <h1 class="hero-title">بحر <span>النون</span></h1>
+    <p class="hero-tagline">أبحر — الكلمة الحقة لا تغرق</p>
+  </div>
+
+  <div class="scroll-line-indicator" onclick="document.getElementById('articles').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-line-track">
+      <div class="scroll-line-fill"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-wrap">
+    <div class="about-inner reveal">
+      <div class="about-text">
+        <span class="section-label">عن المجلة</span>
+        <h2 class="section-title">كلمة <em>تقاوم</em><br>في زمن يغرق</h2>
+        <p>بحر النون مساحة لمن نجا من الصمت — كتابة جادة بلا قيود، تقول الحق وتصمد في وجه التيار. عربية وفرنسية، في الفكر والسياسة والقضايا الكبرى.</p>
+      </div>
+      <div class="about-visual">
+        <div class="about-ring"></div>
+        <div class="about-ring2"></div>
+        <div class="big-nun">ن</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles-section" id="articles">
+  <div class="section-wrap">
+    <div class="articles-header reveal">
+      <div>
+        <span class="section-label">المقالات</span>
+        <h2 class="section-title">ما كُتب حتى الآن</h2>
+      </div>
+      <span class="articles-count">2 مقالات منشورة · عربي وفرنسي</span>
+    </div>
+
+    <div class="articles-grid">
+
+      <!-- Article 1 - Belhadj -->
+      <a href="belhadj.html" style="text-decoration:none;">
+        <div class="article-card">
+          <span class="card-category">🟤 فكر إسلامي · عربي</span>
+          <div class="card-title">علي بلحاج</div>
+          <div class="card-subtitle">بين حرارة الإيمان وفقه الميزان</div>
+          <p class="card-excerpt">قراءة علمية منهجية على ضوء أصول أهل السنة والجماعة — لا استفزازًا ولا مجاملة — في شخصية أثارت جدلاً لم يهدأ.</p>
+          <div class="card-footer">
+            <div class="card-meta">
+              <span>شوال 1447</span>
+              <span>12 دقيقة</span>
+            </div>
+            <span class="card-read">اقرأ المقال ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 2 - USA liberté française -->
+      <a href="usa-israel.html" style="text-decoration:none;">
+        <div class="article-card" style="animation-delay:.2s;">
+          <span class="card-category">🔵 Géopolitique · Français</span>
+          <div class="card-title" style="font-family:'Georgia',serif;font-size:1.3rem;line-height:1.35;">La Plus Grande <em style="color:var(--goldl);font-style:italic;">Illusion</em> du XXIe Siècle</div>
+          <div class="card-subtitle" style="font-family:'Georgia',serif;font-size:.95rem;">États-Unis & Israël — Décryptage</div>
+          <p class="card-excerpt" style="font-family:'Georgia',serif;font-size:.97rem;direction:ltr;text-align:left;">Les États-Unis se proclament champions de la liberté. Mais une question simple posée dans les couloirs du Congrès fait s'effondrer ce mythe — dans un silence assourdissant.</p>
+          <div class="card-footer">
+            <div class="card-meta">
+              <span>Mars 2026</span>
+              <span>8 min</span>
+            </div>
+            <span class="card-read">Lire l'article ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 3 - Coming soon -->
+      <div class="article-card card-soon" style="animation-delay:.3s;">
+        <span class="soon-badge">قريباً</span>
+        <div class="card-title">المقال القادم</div>
+        <div class="card-subtitle">موضوع تحت الكتابة</div>
+        <p class="card-excerpt">يجري العمل على مقال جديد في نفس الروح — رصانة في الطرح، وأمانة في النقل، وعمق في التحليل.</p>
+        <div class="card-footer">
+          <div class="card-meta"><span>قريباً</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author-section" id="about">
+  <div class="section-wrap">
+    <div style="opacity:1;transform:none;">
+      <span class="section-label">عن الكاتب</span>
+      <div class="author-inner">
+        <div class="author-info">
+          <div class="author-name-big" style="color:var(--goldl);font-size:1.8rem;font-weight:700;margin-bottom:8px;">عبد الرفيق ح.</div>
+          <p class="author-bio" style="color:var(--silver);font-size:1.05rem;line-height:1.9;">كاتب جزائري عرف طعم الغرق — ونجا. يكتب بالعربية والفرنسية، لأن من عاد من القاع يملك ما لا يملكه من لم يغُص.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="hero-line"></div>
 </section>
 
-<!-- MAIN -->
-<div class="wrap">
-  <div class="layout">
+<!-- CONTACT -->
+<section id="contact" style="padding:60px 0;border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <span class="section-label">تواصل</span>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;">
 
-    <!-- ARTICLE -->
-    <article>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@ElementaryRS" target="_blank"
+        style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:16px 24px;border-radius:6px;text-decoration:none;transition:all .25s;flex:1;min-width:200px;"
+        onmouseover="this.style.borderColor='#ff0000';this.style.background='rgba(255,0,0,.06)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(255,255,255,.04)'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        <span style="font-family:'Noto Naskh Arabic',serif;font-size:13px;color:var(--silver);">Elementary RS — YouTube</span>
+      </a>
 
-      <!-- Opening quote -->
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/ElementaryRS" target="_blank"
+        style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:16px 24px;border-radius:6px;text-decoration:none;transition:all .25s;flex:1;min-width:200px;"
+        onmouseover="this.style.borderColor='#1877f2';this.style.background='rgba(24,119,242,.06)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(255,255,255,.04)'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.6-4.7l2.6.2v3h-1.5c-1.5 0-1.9.9-1.9 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg>
+        <span style="font-family:'Noto Naskh Arabic',serif;font-size:13px;color:var(--silver);">Elementary RS — Facebook</span>
+      </a>
 
+      <!-- Email -->
+      <a href="/cdn-cgi/l/email-protection#225043444a4d41121262454f434b4e0c414d4f" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:16px 24px;border-radius:6px;text-decoration:none;transition:all .25s;flex:1;min-width:200px;" onmouseover="this.style.borderColor='var(--goldl)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(255,255,255,.04)'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        <span style="font-family:'Noto Naskh Arabic',serif;font-size:13px;color:var(--silver);"><span class="__cf_email__" data-cfemail="80f2e1e6e8efe3b0b0c0e7ede1e9ecaee3efed">[email&#160;protected]</span></span>
+      </a>
 
-      <!-- Intro -->
-      <div class="reveal">
-        <p class="dropcap">ليس الغرض من هذه السطور الحطَّ من رجل ذاق مرارة السجن ولقي أذى السلطة، ولا النيل من شخص ينتسب — ظاهرًا — إلى الإسلام. غير أن العلم أمانة، والنصيحة ديْن، وسكوت المرء عن الخطأ حين يملك البيان ضرب من التواطؤ.</p>
-        <p>وعلي بلحاج ظاهرة جديرة بالدراسة لا بالاحتفاء المطلق ولا بالإسقاط المبتذل، إذ هو في الوقت ذاته: خطيب آسر، ومظلوم مقهور، ومنهج مشكِل، وشهادة تاريخية على حقبة بالغة الخطورة. سنضعه هنا في الميزان الذي وضعه علماء أهل السنة: <strong>ميزان الكتاب والسنة وفهم السلف.</strong></p>
-      </div>
-
-      <!-- S1 -->
-      <div id="s1" class="sec reveal">
-        <span class="sec-num">أولًا</span>
-        <h2 class="sec-title">ما يُحسب له — الإنصاف أصل العدل</h2>
-        <p>لا تصح المحاكمة المنهجية إلا بعد الاعتراف بما للرجل من حسنات لا يُمكن إنكارها. والإنصاف فريضة قبل أن يكون فضيلة.</p>
-        <div class="cards">
-          <div class="card">
-            <div class="card-num">1</div>
-            <div class="card-title">شجاعة الكلمة في وجه الطغيان</div>
-            <p>قضى بلحاج سنوات طويلة خلف القضبان دون أن يتنازل، ورفض التوقيع على وثيقة تُسكته مقابل حريته. وقد أشاد الشيخ سلمان العودة بخطبه ورسائله قائلاً إنها تُذكِّره بسيرة شيخ الإسلام ابن تيمية — وهو إطراء يدل على قوة التأثير لا على تزكية علمية.</p>
-          </div>
-          <div class="card">
-            <div class="card-num">2</div>
-            <div class="card-title">أصالة انطلاقته الدعوية</div>
-            <p>نشأ مبكرًا في مساجد العاصمة يُحارب البدع ويُحيي السنن ويُعلِّم الناس في الحافلات والأزقة. وهذا هو منهج السلف في التغيير: البداية بإصلاح العقيدة، لا بالانقضاض على السلطة.</p>
-          </div>
-          <div class="card">
-            <div class="card-num">3</div>
-            <div class="card-title">التمسك الظاهر بالمرجعية السلفية</div>
-            <p>صرّح في أكثر من مناسبة بأن «طريق النجاة هو الاستمساك بكتاب الله وسنة رسوله في فهم السلف الصالح». ولا يُعاب الكلام بل يُعاب التناقض بينه وبين الممارسة.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- S2 -->
-      <div id="s2" class="sec reveal">
-        <span class="sec-num">ثانيًا</span>
-        <h2 class="sec-title">المسائل الجوهرية — القراءة المنهجية</h2>
-
-        <div class="sub-label">المسألة الأولى: الإسلام السياسي وإشكالية التأصيل</div>
-        <p>علي بلحاج ظاهرة نشأت في سياق موجة «الصحوة الإسلامية» السبعينية والثمانينية، التي حملت فكريْن متمايزين لا يلتقيان: <strong>فكر السلفية العلمية</strong> التي تُقدِّم التزكية والتعليم، و<strong>فكر الإسلام السياسي</strong> الذي يجعل الوصول إلى السلطة مسألة دينية مقدَّسة.</p>
-        <p>وبلحاج —رغم لغته السلفية— انحاز في نهاية المطاف إلى المسار الثاني حين قال صراحة: «غايتنا هي تحقيق شرع الله عبر السلطة».</p>
-        <div class="hbox">العلماء المحققون يُفرِّقون بين إقامة شرع الله كفريضة دينية ثابتة، وبين الاستيلاء على الدولة كوسيلة قد تكون مشروعة أو غير مشروعة. فالخلط بين المقدَّس والسياسي هو عيب منهجي جوهري لا يُغتفر في طالب العلم.</div>
-
-        <div class="sub-label">المسألة الثانية: إشكالية العلاقة مع ولاة الأمر</div>
-        <p>أهل السنة والجماعة مجمعون على قاعدة نبوية ثابتة في السمع والطاعة لولي الأمر في المعروف، وأن الخروج عليه بالسلاح محرَّم ولو جار وظلم، ما لم يقع كفر بواح بيِّن.</p>
-
-        <p>والمنتقدون لبلحاج يرون أنه في مرحلة التسعينيات تجاوز هذه القاعدة، لا بنقدها فحسب بل بالخطاب الذي يُضفي مشروعية على الخروج المسلح.</p>
-
-        <div class="sub-label">المسألة الثالثة: التكفير والتبديع وأثرهما الاجتماعي</div>
-        <p>من أخطر ما يُؤخذ على الخطاب البلحاجي <strong>توظيف اللغة الدينية لتصفية الخصومات السياسية.</strong> فحين يُوصف الخصم بالفسق أو العمالة، تتحول الخلافات القابلة للنقاش إلى معارك وجودية لا هوادة فيها.</p>
-        <p>وأهل السنة يُقرِّرون أن التكفير المعين له شروط وموانع لا يملكها إلا المتمكنون من العلم الشرعي. وقد قال ابن تيمية إنه رأى أمراء الغزاة يرتكبون منكرات صريحة فلم يُكفِّرهم، لأن الفتنة أعظم مفسدةً من الظلم.</p>
-
-        <div class="sub-label">المسألة الرابعة: التناقض بين المبدأ والممارسة</div>
-        <p>قال بلحاج في شبابه الدعوي: «أنصح المسلمين أن لا يتحزبوا، وأن يجعلوا الأحزاب وسائل لا غايات». هذا كلام ذهب. غير أن مسيرته أثبتت العكس تمامًا.</p>
-        <div class="hbox">هذا تناقض يؤلم أكثر مما يُغضب، لأنه يكشف عن مسافة شاسعة بين <strong>وضوح الرؤية النظرية</strong> وضبابية التطبيق الواقعي. وكم من رجل كان أحكم وصفًا من سلوك نفسه.</div>
-
-        <div class="sub-label">المسألة الخامسة: الكاريزما بديلًا عن العلم الشرعي</div>
-        <p>علي بلحاج خطيب موهوب وفصيح بامتياز، لكنه ليس عالم شريعة بالمعنى الدقيق. تكوينه في الشريعة والأدب جاء في معظمه بصورة ذاتية غير منهجية، بعيدًا عن المسار الأكاديمي المتسلسل الذي يُخرِّج الفقهاء المتمكنين.</p>
-        <p>وحين يتصدَّر للفتوى السياسية من يملك الكاريزما دون الأدوات، فإن حماسه قد يُعوِّض عن دقته. وهذا ليس طعنًا في نيته، بل تقدير للمسافة التي تفصل بين <strong>داعية عاطفي مؤثر</strong> و<strong>فقيه محقق ضابط.</strong></p>
-      </div>
-
-      <!-- S3 -->
-      <div id="s3" class="sec reveal">
-        <span class="sec-num">ثالثًا</span>
-        <h2 class="sec-title">السياق التاريخي — العدل يقتضي الفهم</h2>
-        <p>لا يكتمل الميزان إلا بفهم السياق الذي نشأ فيه بلحاج. الجزائر مطلع التسعينيات كانت دولة استبدادية عريقة، نظام خانق، شعب محروم، شباب مغلوب على أمره لا يجد منفذًا. في هذا الفراغ الهائل نجحت الجبهة الإسلامية للإنقاذ في تجميع طاقة شعبية هائلة وفوز انتخابي تاريخي لم يسبق له نظير.</p>
-        <p>في هذا السياق يُمكن فهم — لا تبرير — كثيرًا من المواقف التي اتخذها بلحاج. والإنسان ابن بيئته وزمانه. وقد قال الإمام الشاطبي إن الحكم على الأفعال لا يتم إلا باستحضار ملابساتها. فليُحاكَم الرجل من داخل سياقه، لا من برج عاجي مريح.</p>
-      </div>
-
-      <!-- Conclusion -->
-      <div id="s4" class="reveal">
-        <div class="conclusion">
-          <span class="sec-num" style="color:var(--goldl)">خلاصة</span>
-          <h2 class="sec-title">درس بلحاج أكبر من بلحاج</h2>
-          <p>الخلاصة التي يكتبها الباحث المنصف هي أن علي بلحاج يُجسِّد تناقضًا حادًا عاشته حركات كثيرة في العالم الإسلامي: <strong>بين صدق الدافع وخطأ الأسلوب، بين صحة الغاية البعيدة وقِصَر النَّفَس في سلوك الطريق إليها.</strong></p>
-          <p>وهو درس أكبر من شخصه: حين تضعف المؤسسة العلمية الشرعية المستقلة ويتراجع الفقه العميق وتحتلَّ مكانه الخطابة الحماسية — يظهر رجال أقوياء الإيمان ضعاف المنهج، مخلصون في النية مقصِّرون في الأداة. فيُلحقون بالأمة من الأذى ما لا يُلحقه خصومها.</p>
-          <p>وما أحوجنا اليوم إلى هذا الدرس: الإسلام لا ينتصر بأكثر الناس حماسًا، بل بأرسخهم علمًا وأحكمهم منهجًا وأصبرهم نَفَسًا.</p>
-          <div class="ayah">
-            ❧ ﴿قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ﴾ ❧
-            <span class="ayah-ref">— سورة الزمر: ٩</span>
-          </div>
-          <div class="signature">
-            <span class="sig-name">عبد الرفيق ح.</span>
-            <span class="sig-date">الجزائر — شوال 1447 هـ / مارس 2026 م</span>
-          </div>
-        </div>
-      </div>
-
-    </article>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-      <div class="s-card">
-        <div class="s-title">محتويات المقال</div>
-        <div class="toc-item" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})">
-          <span class="toc-num">أولًا</span>
-          <span class="toc-label">ما يُحسب له — الإنصاف أصل العدل</span>
-        </div>
-        <div class="toc-item" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})">
-          <span class="toc-num">ثانيًا</span>
-          <span class="toc-label">المسائل الجوهرية — القراءة المنهجية</span>
-        </div>
-        <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})">
-          <span class="toc-num">ثالثًا</span>
-          <span class="toc-label">السياق التاريخي — العدل يقتضي الفهم</span>
-        </div>
-        <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})">
-          <span class="toc-num">خلاصة</span>
-          <span class="toc-label">درس بلحاج أكبر من بلحاج</span>
-        </div>
-      </div>
-
-      <div class="s-card">
-        <div class="s-title">الوسوم</div>
-        <div class="tags">
-          <span class="tag">أهل السنة</span>
-          <span class="tag">الجزائر</span>
-          <span class="tag">الفكر الإسلامي</span>
-          <span class="tag">الإسلام السياسي</span>
-          <span class="tag">منهج السلف</span>
-          <span class="tag">التسعينيات</span>
-        </div>
-      </div>
-
-      <div class="reading-box">
-        <div class="reading-num">12</div>
-        <div class="reading-lbl">دقيقة للقراءة</div>
-      </div>
-
-    </aside>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-brand">مـنـارة</span>
-  مجلة الفكر الإسلامي · جميع الحقوق محفوظة · ١٤٤٧ هـ
+  <span class="footer-logo">بحر النون</span>
+  <div class="footer-verse" style="font-family:'Amiri',serif;font-size:1rem;font-style:italic;">أبحر — الكلمة الحقة لا تغرق</div>
+  <div class="footer-copy">
+    جميع المقالات بقلم عبد الرفيق ح. · 1447 هـ · الجزائر
+    <br><br>
+    <span style="font-family:'Noto Naskh Arabic',serif;font-size:11px;letter-spacing:.12em;color:#3a4a5a;">
+      © 2026 — Elementary Raf Studio
+    </span>
+  </div>
 </footer>
 
-<script>
-  // progress bar
-  window.addEventListener('scroll', () => {
-    const d = document.documentElement;
-    document.getElementById('progress').style.width =
-      (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
-  });
-
-  // scroll reveal
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Typewriter
+  const phrases = ['فكر · تحليل · موقف', 'عربي وفرنسي', 'كلمة تقاوم'];
+  let pi = 0, ci = 0, deleting = false;
+  function type() {
+    const phrase = phrases[pi];
+    const el = document.getElementById('tw');
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 400); return; }
+    }
+    setTimeout(type, deleting ? 60 : 100);
+  }
+  setTimeout(type, 800);
 </script>
 </body>
 </html>
