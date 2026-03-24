@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصِّدِّيقان — مريم وأبو بكر وسرّ المسجد الأقصى | بحر النون</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --goldl: #e8cc80;
+  --gold-pale: #f5e9c8;
+  --deep: #0e0c08;
+  --ink: #1a1610;
+  --parchment: #faf6ec;
+  --brown: #4a3520;
+  --rust: #7a3b1e;
+  --green-dome: #2d5a3d;
+  --green-light: #4a8c5c;
+  --cream: #f0e8d5;
+  --border: #d4b896;
+  --muted: #6b5c45;
+  --shadow: rgba(26,18,8,.11);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--deep);
+  color: var(--ink);
+  font-family: 'Noto Naskh Arabic', serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--deep); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── PROGRESS ── */
+#progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--goldl));
+  z-index: 600; transition: width .1s linear;
+}
+
+/* ── HEADER ── */
+header {
+  background: rgba(14,12,8,.97);
+  backdrop-filter: blur(12px);
+  padding: 14px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(201,168,76,.3);
+  position: sticky; top: 0; z-index: 400;
+}
+.logo {
+  font-family: 'Scheherazade New', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--goldl); text-decoration: none;
+}
+nav { display: flex; gap: 24px; align-items: center; }
+nav a {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 13px; color: #a8b8c8;
+  text-decoration: none; transition: color .2s;
+}
+nav a:hover { color: var(--goldl); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes floatDome { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+@keyframes revealIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #1a1200 0%, #0e0c08 70%);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(45,90,61,0.1) 0%, transparent 50%);
+}
+.pattern-bg {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(60deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+    repeating-linear-gradient(120deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+  background-size: 40px 70px;
+}
+.dome-icon {
+  font-size: 5rem; margin-bottom: 1.5rem;
+  animation: floatDome 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(201,168,76,0.4));
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  font-family: 'Amiri', serif; font-size: 0.95rem;
+  color: var(--gold); letter-spacing: 4px; text-transform: uppercase;
+  margin-bottom: 1.5rem; position: relative; z-index: 1;
+  opacity: 0; animation: fadeUp 1s 0.3s forwards;
+}
+.hero h1 {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  color: var(--goldl); line-height: 1.3; margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 1s 0.6s forwards;
+  text-shadow: 0 2px 40px rgba(201,168,76,0.3);
+  position: relative; z-index: 1;
+}
+.hero-sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(240,232,213,0.7); max-width: 600px;
+  line-height: 1.9; margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 1s 0.9s forwards;
+  position: relative; z-index: 1;
+}
+.hero-meta-bar {
+  display: flex; align-items: center; gap: 20px;
+  opacity: 0; animation: fadeUp 1s 1.1s forwards;
+  position: relative; z-index: 1;
+}
+.hero-date {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 12px; color: rgba(201,168,76,.6);
+  letter-spacing: .1em;
+}
+.hero-author {
+  font-family: 'Scheherazade New', serif;
+  font-size: 15px; color: var(--goldl);
+}
+.hero-sep { width: 1px; height: 16px; background: rgba(201,168,76,.3); }
+.hero-divider {
+  width: 120px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1rem auto 0;
+  opacity: 0; animation: fadeUp 1s 1.3s forwards;
+  position: relative; z-index: 1;
+}
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold); opacity: 0.5; font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+/* ── LAYOUT ── */
+.page-layout {
+  background: var(--parchment);
+  position: relative;
+}
+.page-layout::before {
+  content: ''; display: block; height: 60px;
+  background: linear-gradient(to bottom, var(--deep), var(--parchment));
+}
+.layout-inner {
+  max-width: 1120px; margin: 0 auto;
+  padding: 40px 32px 100px;
+  display: grid; grid-template-columns: 1fr 240px;
+  gap: 56px; align-items: start;
+}
+
+/* ── ARTICLE ── */
+.article-col {}
+
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* ── SECTION ── */
+.section {
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+.section:first-child { border-top: none; }
+
+.section-header {
+  display: flex; align-items: center;
+  gap: 1rem; margin-bottom: 2rem;
+}
+.section-num {
+  font-family: 'Amiri', serif; font-size: 3rem;
+  color: var(--gold); opacity: 0.25;
+  line-height: 1; flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  color: var(--brown); line-height: 1.4;
+}
+.section-title span {
+  display: block; font-size: 0.85em;
+  color: var(--rust); font-style: italic;
+}
+
+/* ── AYAH ── */
+.ayah {
+  background: linear-gradient(135deg, #fff8e8, #fef3d0);
+  border-right: 5px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 1.5rem 2rem; margin: 1.5rem 0;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+.ayah::before {
+  content: '❝'; position: absolute;
+  top: -10px; right: 1.5rem;
+  font-size: 3rem; color: var(--gold); opacity: 0.3;
+  font-family: Georgia, serif;
+}
+.ayah-text {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--ink); line-height: 2.2; text-align: center;
+}
+.ayah-ref {
+  text-align: center; margin-top: .5rem;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: .8rem; color: var(--muted);
+}
+
+/* ── HADITH ── */
+.hadith {
+  background: #f0ede6;
+  border-right: 4px solid var(--rust);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem 1.8rem; margin: 1.5rem 0;
+}
+.hadith-text {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: var(--ink); line-height: 2;
+}
+.hadith-ref {
+  margin-top: .5rem;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: .78rem; color: var(--muted); font-style: italic;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.12rem; line-height: 2.1;
+  color: #2a1e10; margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+/* ── INTRO CARD ── */
+.intro-card {
+  background: linear-gradient(135deg, #1a1200, #0e0c08);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px; padding: 2rem 2.5rem; margin-bottom: 2rem;
+  position: relative; overflow: hidden;
+}
+.intro-card::before {
+  content: '﷽';
+  position: absolute; top: -20px; left: -10px;
+  font-size: 120px; color: var(--gold); opacity: .04;
+  font-family: 'Scheherazade New', serif; pointer-events: none;
+}
+.intro-card p {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem; color: rgba(240,232,213,.85);
+  line-height: 2; position: relative; z-index: 1;
+}
+
+/* ── QUDS SECTION ── */
+.quds-section {
+  background: linear-gradient(135deg, #0a1a0d, #0e1a10);
+  padding: 4rem 2rem;
+}
+.quds-inner {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.quds-icon { font-size: 4rem; display: block; margin-bottom: 1.5rem; }
+.quds-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--goldl); line-height: 1.5; margin-bottom: 1.5rem;
+}
+.quds-body {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem; color: rgba(240,232,213,.85);
+  line-height: 2.1; text-align: justify; margin-bottom: 1rem;
+}
+
+/* ── TIMELINE ── */
+.timeline { padding: 1rem 0; }
+.tl-item {
+  display: flex; gap: 1.5rem;
+  margin-bottom: 2rem; align-items: flex-start;
+}
+.tl-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0; margin-top: 6px;
+  box-shadow: 0 0 0 4px rgba(201,168,76,.2);
+}
+.tl-dot.green { background: var(--green-light); box-shadow: 0 0 0 4px rgba(74,140,92,.2); }
+.tl-content {}
+.tl-who {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: .95rem; font-weight: 700; color: var(--brown);
+  margin-bottom: .4rem;
+}
+.tl-desc {
+  font-family: 'Amiri', serif;
+  font-size: 1rem; color: #3a2a15; line-height: 1.9;
+}
+
+/* ── INSIGHT CARD ── */
+.insight-card {
+  background: linear-gradient(135deg, #fff8e8, #fef0c0);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 8px; padding: 1.5rem 2rem; margin: 1.5rem 0;
+}
+.card-title {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1rem; font-weight: 700; color: var(--brown);
+  margin-bottom: .8rem;
+}
+.card-body {
+  font-family: 'Amiri', serif;
+  font-size: 1.05rem; color: var(--ink); line-height: 2;
+}
+
+/* ── CLOSING ── */
+.closing {
+  background: var(--deep); padding: 4rem 2rem;
+}
+.closing-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.ornament { color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; letter-spacing: .5rem; }
+.closing-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--goldl); margin-bottom: 1.5rem;
+}
+.closing-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.05rem; color: rgba(240,232,213,.8);
+  line-height: 2.1; text-align: justify;
+}
+.tasbih {
+  margin-top: 2rem;
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.4rem; color: var(--gold);
+}
+
+/* ── SIDEBAR ── */
+.sidebar { position: sticky; top: 80px; }
+.s-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 20px 18px; margin-bottom: 18px;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.s-title {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; color: var(--gold);
+  margin-bottom: 14px; text-transform: uppercase;
+}
+.toc-item {
+  border-bottom: 1px solid #f0e8d8;
+  padding: 9px 0; cursor: pointer;
+  font-family: 'Amiri', serif;
+  font-size: 14px; color: var(--muted);
+  transition: color .2s; display: flex;
+  align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-item:hover { color: var(--gold); }
+.toc-n {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; color: var(--gold);
+  font-weight: 700; flex-shrink: 0; margin-top: 3px;
+}
+.back-link {
+  display: block; text-align: center;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 13px; color: var(--muted);
+  text-decoration: none; padding: 12px;
+  border: 1px solid var(--border);
+  transition: all .2s; border-radius: 4px;
+}
+.back-link:hover { background: var(--deep); color: var(--goldl); border-color: var(--deep); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  background: var(--parchment); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 20px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 11px; color: var(--muted);
+  cursor: default; transition: all .2s;
+}
+.tag:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep); color: #7a6a55;
+  text-align: center; padding: 36px 20px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 13px;
+  border-top: 1px solid rgba(201,168,76,.2);
+}
+.footer-brand {
+  font-family: 'Scheherazade New', serif;
+  font-size: 22px; color: var(--goldl);
+  display: block; margin-bottom: 8px;
+}
+
+@media (max-width: 860px) {
+  .layout-inner { grid-template-columns: 1fr; padding: 32px 20px 80px; }
+  .sidebar { position: static; }
+  nav { display: none; }
+  header { padding: 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">بحر النون</a>
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="index.html#articles">المقالات</a>
+    <a href="index.html#about">عن الكاتب</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="pattern-bg"></div>
+  <div class="dome-icon">🕌</div>
+  <p class="hero-tag">تأمل قرآني · فكر إسلامي</p>
+  <h1>الصِّدِّيقان<br><span style="font-size:.65em;color:rgba(232,204,128,.7);">مريم وأبو بكر وسرّ المسجد الأقصى</span></h1>
+  <p class="hero-sub">روابطٌ خفيَّة تجمع بين أعظم شخصيَّتَيْن وُصفتا بالصِّدِّيقية في تاريخ البشرية</p>
+  <div class="hero-meta-bar">
+    <span class="hero-author">عبد الرفيق ح.</span>
+    <span class="hero-sep"></span>
+    <span class="hero-date">شوال 1447 هـ · مارس 2026</span>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="page-layout">
+  <div class="layout-inner">
+
+    <!-- ARTICLE -->
+    <div class="article-col">
+
+      <!-- INTRO -->
+      <div class="reveal">
+        <div class="intro-card">
+          <p>ثمّة روابطٌ خفيَّة في القرآن الكريم والسيرة النبوية تظلّ مطويَّةً حتى يأتي من يجمعها ويُضيء ما بينها. هذه المقالة تجمع بين شخصيَّتَيْن عظيمتَيْن — مريم بنت عمران عليها السلام وأبي بكر الصِّدِّيق رضي الله عنه — يجمعهما لقبٌ واحد نادر، ومكانٌ واحد مبارك.</p>
+        </div>
+      </div>
+
+      <!-- S1 -->
+      <div class="reveal section" id="s1">
+        <div class="section-header">
+          <div class="section-num">١</div>
+          <h2 class="section-title">اللقب النادر<span>ما معنى «الصِّدِّيق»؟</span></h2>
+        </div>
+        <p class="body-text">«الصِّدِّيق» صيغة مبالغة من الصِّدق — لا تُعطى لمن صدق مرةً أو مرتَيْن، بل لمن رسخ فيه الصدق رسوخاً تاماً حتى صار سجيةً لا تتبدَّل. وهي من أرفع الدرجات التي ذكرها الله في كتابه:</p>
+        <div class="ayah">
+          <p class="ayah-text">﴿ وَمَن يُطِعِ اللَّهَ وَالرَّسُولَ فَأُولَٰئِكَ مَعَ الَّذِينَ أَنْعَمَ اللَّهُ عَلَيْهِم مِّنَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ ﴾</p>
+          <p class="ayah-ref">— سورة النساء: 69</p>
+        </div>
+        <p class="body-text">فالصِّدِّيقون جاؤوا مباشرةً بعد الأنبياء — وهي منزلةٌ لا يبلغها إلا من صفا قلبه وصدق مع الله في كل أحواله.</p>
+      </div>
+
+      <!-- S2 -->
+      <div class="reveal section" id="s2">
+        <div class="section-header">
+          <div class="section-num">٢</div>
+          <h2 class="section-title">مريم الصِّدِّيقة<span>شهادة القرآن الكريم</span></h2>
+        </div>
+        <p class="body-text">وصف الله مريم عليها السلام بـ«الصِّدِّيقة» صراحةً في قوله تعالى:</p>
+        <div class="ayah">
+          <p class="ayah-text">﴿ مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ وَأُمُّهُ صِدِّيقَةٌ ﴾</p>
+          <p class="ayah-ref">— سورة المائدة: 75</p>
+        </div>
+        <p class="body-text">فجاء وصف <strong>«صِدِّيقة»</strong> في أعلى درجاته — صيغة مبالغة مؤنَّثة — ليدلّ على تمكُّن هذه الصفة فيها. وسبب هذا التصديق الراسخ أنّها واجهت من المعجزات ما يُعجز العقول:</p>
+        <div class="ayah">
+          <p class="ayah-text">﴿ قَالَتْ رَبِّ أَنَّىٰ يَكُونُ لِي وَلَدٌ وَلَمْ يَمْسَسْنِي بَشَرٌ ۖ قَالَ كَذَٰلِكِ اللَّهُ يَخْلُقُ مَا يَشَاءُ ﴾</p>
+          <p class="ayah-ref">— سورة آل عمران: 47</p>
+        </div>
+        <p class="body-text">سألت استفساراً — لا شكاً — فلمّا جاء الجواب الإلهي استسلمت واستقبلت. هذا هو التصديق الكامل: قبولُ قدرة الله بلا جدال.</p>
+        <div class="ayah">
+          <p class="ayah-text">﴿ فَأَشَارَتْ إِلَيْهِ ۖ قَالُوا كَيْفَ نُكَلِّمُ مَن كَانَ فِي الْمَهْدِ صَبِيًّا ﴾</p>
+          <p class="ayah-ref">— سورة مريم: 29</p>
+        </div>
+      </div>
+
+      <!-- S3 -->
+      <div class="reveal section" id="s3">
+        <div class="section-header">
+          <div class="section-num">٣</div>
+          <h2 class="section-title">أبو بكر الصِّدِّيق<span>شهادة النبي ﷺ والقرآن</span></h2>
+        </div>
+        <p class="body-text">كان أبو بكر رضي الله عنه قد عُرف بالصدق قبل الإسلام، فلمّا بُعث النبي ﷺ كان أوّل من صدّق من الرجال الأحرار. غير أنّ لقب "الصِّدِّيق" رسخ له تحديداً ليلةَ الإسراء والمعراج:</p>
+        <div class="hadith">
+          <p class="hadith-text">لمّا أخبر النبيُّ ﷺ قريشاً بالإسراء كذّبوه، فذهبوا إلى أبي بكر يستهزئون. قال: «إن كان قال ذلك فقد صدق». قالوا: تُصدِّقه؟ قال: «نعم، إنّي لأصدِّقه فيما هو أبعد من ذلك، أصدِّقه بخبر السماء». فسمّاه النبيُّ ﷺ يومئذٍ الصِّدِّيق.</p>
+          <p class="hadith-ref">— ذكره ابن إسحاق في السيرة، وابن كثير في البداية والنهاية</p>
+        </div>
+        <div class="ayah">
+          <p class="ayah-text">﴿ ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا ﴾</p>
+          <p class="ayah-ref">— سورة التوبة: 40</p>
+        </div>
+        <div class="hadith">
+          <p class="hadith-text">«مَا نَفَعَنِي مَالٌ قَطُّ مَا نَفَعَنِي مَالُ أَبِي بَكْرٍ»</p>
+          <p class="hadith-ref">— أخرجه الترمذي وقال: حديث حسن صحيح</p>
+        </div>
+        <div class="hadith">
+          <p class="hadith-text">«لَوْ كُنْتُ مُتَّخِذًا مِنْ أُمَّتِي خَلِيلًا لَاتَّخَذْتُ أَبَا بَكْرٍ خَلِيلًا، وَلَكِنْ أَخِي وَصَاحِبِي»</p>
+          <p class="hadith-ref">— متفق عليه</p>
+        </div>
+      </div>
+
+      <!-- S4 -->
+      <div class="reveal section" id="s4">
+        <div class="section-header">
+          <div class="section-num">٤</div>
+          <h2 class="section-title">أوجه التشابه<span>ما يجمع الصِّدِّيقَيْن</span></h2>
+        </div>
+        <p class="body-text">أوّل ما يجمعهما هو <strong>نصّ اللقب ذاته</strong> — فمريم وُصفت في القرآن بـ«صِدِّيقة» وأبو بكر سمّاه النبي ﷺ «الصِّدِّيق»، وكلاهما صيغة مبالغة لا تُعطى إلا لمن رسخ فيه الصدق رسوخاً تاماً.</p>
+        <p class="body-text">ويجمعهما ثانياً <strong>التصديق الفوري بالمعجزة</strong> — فمريم صدّقت بالحمل من غير أب فور بشرى الملاك، وأبو بكر صدّق بالإسراء في الحين نفسه الذي كذّبه فيه سائر القوم.</p>
+        <p class="body-text">ويجمعهما ثالثاً <strong>الثبات في البلاء</strong> — فمريم واجهت اتهام قومها صامتةً واثقةً بالله، وأبو بكر واجه أذى قريش فبذل ماله ونفسه في سبيل نصرة الحق.</p>
+        <p class="body-text">وأما <strong>القرب من النبي</strong> فكان من أبرز ما يميّزهما — إذ حملت مريم عيسى عليه السلام وربّته، وكان أبو بكر رفيق النبي محمد ﷺ في الغار وفي الهجرة وفي كل المواقف الكبرى.</p>
+      </div>
+
+      <!-- QUDS -->
+      <div class="reveal">
+        <div class="quds-section" style="margin:0;border-radius:8px;">
+          <div class="quds-inner">
+            <span class="quds-icon">🕌</span>
+            <h2 class="quds-title">اللفتة الذهبية المنسيَّة<br>المسجد الأقصى يجمعهما</h2>
+            <p class="quds-body">إذا وقفتَ أمام هذا السؤال: <strong>ما الذي يربط لقب الصِّدِّيق بين مريم وأبي بكر على وجه التحديد؟</strong> — فالجواب يكمن في بقعةٍ واحدة على وجه الأرض، هي <strong>المسجد الأقصى</strong>.</p>
+            <div class="ayah" style="background:rgba(255,255,255,0.07);border-color:#c9a84c;color:white;">
+              <p class="ayah-text" style="color:#f5e9c8;">﴿ إِذْ قَالَتِ امْرَأَتُ عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّراً ﴾</p>
+              <p class="ayah-ref" style="color:#c9a84c;">— سورة آل عمران: 35</p>
+            </div>
+            <p class="quds-body">نذرت أمُّ مريم طفلتها لخدمة <strong>المسجد الأقصى</strong>. فكانت مريم حرفياً <em>هِبةً للمسجد الأقصى منذ قبل أن تُولد</em>، تربّت في محرابه، وتكفَّل بها زكريا عليه السلام فيه.</p>
+            <p class="quds-body" style="margin-top:1rem;">وعلى الجانب الآخر، جاء أبو بكر ليكسب لقبه الأبدي <em>بسبب تصديقه برحلة النبي ﷺ إلى المسجد الأقصى تحديداً</em>. فكأنّ ذلك البيت المبارك هو الذي <strong>ختم لهما وشهد لهما</strong> بالصِّدِّيقية.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- S6 TIMELINE -->
+      <div class="reveal section" id="s6">
+        <div class="section-header">
+          <div class="section-num">٦</div>
+          <h2 class="section-title">خطّ الزمن المقدّس<span>المسجد الأقصى يجمعهما عبر القرون</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-who">قبل الميلاد — أمّ مريم</div>
+              <div class="tl-desc">تنذر ابنتها لخدمة المسجد الأقصى قبل ولادتها</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-who">مريم عليها السلام في المسجد الأقصى</div>
+              <div class="tl-desc">تترعرع في محراب المسجد الأقصى، يتكفّل بها زكريا، يأتيها الرزق من عند الله</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-who">مريم عليها السلام — التصديق الأعظم</div>
+              <div class="tl-desc">تُبشَّر بالحمل من غير أب فتُصدِّق فوراً وتستسلم لأمر الله — فتُسمَّى «صِدِّيقة»</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot green"></div>
+            <div class="tl-content">
+              <div class="tl-who">ليلة الإسراء — النبي ﷺ يُسرى به إلى المسجد الأقصى</div>
+              <div class="tl-desc">يُصلِّي بالأنبياء إماماً في المسجد الأقصى، ثم يُعرَج به إلى السماوات</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot green"></div>
+            <div class="tl-content">
+              <div class="tl-who">أبو بكر — التصديق الأعظم</div>
+              <div class="tl-desc">يُصدِّق فوراً دون تردد: «إن كان قال ذلك فقد صدق» — فيُسمِّيه النبي ﷺ <strong>الصِّدِّيق</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S7 -->
+      <div class="reveal section" id="s7">
+        <div class="section-header">
+          <div class="section-num">٧</div>
+          <h2 class="section-title">درس إيماني<span>في صدق القلب</span></h2>
+        </div>
+        <div class="insight-card">
+          <div class="card-title">🌟 ما الذي يصنع الصِّدِّيق؟</div>
+          <div class="card-body">كلاهما واجه <strong>المعجزة في أصعب صورها</strong> — حملٌ بلا أب، وسفرٌ فوق طاقة البشر — وكلاهما اختار <strong>التصديق الفوري</strong> دون مساومة ولا تردد. هذا هو جوهر الصِّدِّيقية: <strong>أن تُصدِّق بالله حين يُخالف ما تراه عقلَك وعادتَك</strong>.</div>
+        </div>
+        <div class="ayah">
+          <p class="ayah-text">﴿ مِّنَ الْمُؤْمِنِينَ رِجَالٌ صَدَقُوا مَا عَاهَدُوا اللَّهَ عَلَيْهِ فَمِنْهُم مَّن قَضَىٰ نَحْبَهُ وَمِنْهُم مَّن يَنتَظِرُ ﴾</p>
+          <p class="ayah-ref">— سورة الأحزاب: 23</p>
+        </div>
+        <div class="hadith">
+          <p class="hadith-text">«عَلَيْكُمْ بِالصِّدْقِ، فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ، وَإِنَّ الْبِرَّ يَهْدِي إِلَى الْجَنَّةِ»</p>
+          <p class="hadith-ref">— متفق عليه من حديث عبد الله بن مسعود رضي الله عنه</p>
+        </div>
+      </div>
+
+      <!-- CLOSING -->
+      <div class="reveal">
+        <div class="closing" style="border-radius:8px;margin-top:1rem;">
+          <div class="closing-inner">
+            <div class="ornament">✦ ✦ ✦</div>
+            <h2 class="closing-title">خاتمة — القرآن نسيجٌ واحد</h2>
+            <p class="closing-text">حين تتأمّل هذه الروابط تُدرك أنّ القرآن والسيرة ليسا كتابَيْن منفصلَيْن، بل <strong>نسيجٌ واحد متماسك</strong> تتشابك خيوطه عبر القرون. مريم عليها السلام نُذرت للمسجد الأقصى قبل أن تُولد، وأبو بكر رضي الله عنه نال أشرف ألقابه بسبب إيمانه برحلة إلى المسجد الأقصى — فكأنّ ذلك البيت المبارك هو الذي <strong>ختم لهما وشهد لهما</strong> بالصِّدِّيقية.</p>
+            <p class="tasbih">سُبْحَانَ اللهِ ❧ وَبِحَمْدِهِ</p>
+            <p style="margin-top:1.5rem;color:#7a6a50;font-size:.9rem;font-style:italic;">عبد الرفيق ح. · شوال 1447 هـ · الجزائر</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="s-card">
+        <div class="s-title">محتويات المقال</div>
+        <div class="toc-item" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">١</span>اللقب النادر — ما معنى الصِّدِّيق؟
+        </div>
+        <div class="toc-item" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">٢</span>مريم الصِّدِّيقة
+        </div>
+        <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">٣</span>أبو بكر الصِّدِّيق
+        </div>
+        <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">٤</span>أوجه التشابه
+        </div>
+        <div class="toc-item" onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">٦</span>خطّ الزمن المقدّس
+        </div>
+        <div class="toc-item" onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth'})">
+          <span class="toc-n">٧</span>درس إيماني
+        </div>
+      </div>
+
+      <div class="s-card">
+        <div class="s-title">الوسوم</div>
+        <div class="tag-list">
+          <span class="tag">القرآن الكريم</span>
+          <span class="tag">مريم</span>
+          <span class="tag">أبو بكر</span>
+          <span class="tag">المسجد الأقصى</span>
+          <span class="tag">الصِّدِّيقون</span>
+          <span class="tag">السيرة</span>
+        </div>
+      </div>
+
+      <a href="index.html" class="back-link">← العودة إلى بحر النون</a>
+
+    </aside>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">بحر النون</span>
+  فكر · تحليل · موقف · جميع الحقوق محفوظة · 1447 هـ
+  <br><br>
+  <span style="font-size:11px;letter-spacing:.12em;color:#2a3a4a;">© 2026 — Elementary Raf Studio</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const d = document.documentElement;
+    document.getElementById('progress').style.width =
+      (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
