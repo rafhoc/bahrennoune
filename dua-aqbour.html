@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدعاء عند القبور — حقيقة شرعية موثّقة</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --parchment: #f5efdf;
+    --parchment-dark: #ede4cc;
+    --gold: #9a7a2e;
+    --gold-light: #c9a84c;
+    --gold-pale: #f0dfa0;
+    --rust: #7a3520;
+    --rust-light: #a04830;
+    --green-deep: #1e3a2a;
+    --green-mid: #2d5a3d;
+    --green-pale: #e8f0eb;
+    --text-body: #2c1f0e;
+    --text-muted: #6b5535;
+    --border: #c8a96040;
+    --border-strong: #9a7a2e80;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--text-body);
+    font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+    font-size: 17px;
+    line-height: 2;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(154,122,46,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(122,53,32,0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239a7a2e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ===== OUTER WRAPPER ===== */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ===== TOP ORNAMENT ===== */
+  .top-ornament {
+    text-align: center;
+    padding: 40px 0 0;
+    color: var(--gold);
+    font-size: 32px;
+    letter-spacing: 8px;
+    opacity: 0.7;
+    animation: fadeIn 1.5s ease;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    text-align: center;
+    padding: 30px 20px 40px;
+    border-bottom: 1px solid var(--border-strong);
+    position: relative;
+    animation: fadeIn 1s ease 0.3s both;
+  }
+
+  header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin: 20px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .series-label {
+    font-family: 'Amiri', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    font-family: 'Amiri', serif;
+    font-size: 17px;
+    color: var(--rust);
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+
+  .author-line {
+    font-family: 'Amiri', serif;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .author-line span {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ===== BISMILLAH ===== */
+  .bismillah {
+    text-align: center;
+    font-family: 'Scheherazade New', serif;
+    font-size: 28px;
+    color: var(--green-deep);
+    padding: 36px 0 20px;
+    animation: fadeIn 1s ease 0.6s both;
+  }
+
+  /* ===== INTRO BOX ===== */
+  .intro-box {
+    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+    color: #e8f0eb;
+    border-radius: 4px;
+    padding: 28px 36px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease 0.8s both;
+  }
+
+  .intro-box::before {
+    content: '❝';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 100px;
+    color: rgba(255,255,255,0.05);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .intro-box p {
+    font-family: 'Amiri', serif;
+    font-size: 18px;
+    line-height: 2.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 52px 0 28px;
+    animation: slideIn 0.8s ease both;
+  }
+
+  .section-number {
+    background: var(--green-deep);
+    color: var(--gold-light);
+    font-family: 'Amiri', serif;
+    font-size: 15px;
+    font-weight: 700;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px rgba(30,58,42,0.3);
+  }
+
+  .section-title {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 700;
+    color: var(--green-deep);
+    border-bottom: 2px solid var(--gold-light);
+    padding-bottom: 6px;
+    flex: 1;
+  }
+
+  /* ===== SUBSECTION ===== */
+  .subsection-title {
+    font-family: 'Amiri', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--rust);
+    margin: 32px 0 14px;
+    padding-right: 14px;
+    border-right: 4px solid var(--gold-light);
+  }
+
+  /* ===== BODY TEXT ===== */
+  .body-text {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 16.5px;
+    line-height: 2.15;
+    color: var(--text-body);
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* ===== QURAN VERSE ===== */
+  .quran-verse {
+    background: linear-gradient(to left, var(--green-pale), #fff9);
+    border-right: 5px solid var(--green-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 22px 18px 18px;
+    margin: 22px 0;
+    position: relative;
+  }
+
+  .quran-verse .verse-text {
+    font-family: 'Scheherazade New', serif;
+    font-size: 22px;
+    color: var(--green-deep);
+    line-height: 2;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quran-verse .verse-ref {
+    font-family: 'Amiri', serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .quran-label {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-family: 'Amiri', serif;
+    font-size: 11px;
+    color: var(--green-mid);
+    background: var(--green-pale);
+    border: 1px solid var(--green-mid);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ===== HADITH BOX ===== */
+  .hadith-box {
+    background: var(--parchment-dark);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 22px 0;
+    position: relative;
+  }
+
+  .hadith-box::before {
+    content: 'حديث شريف';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--rust);
+    color: #fff;
+    font-family: 'Amiri', serif;
+    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+
+  .hadith-box .hadith-text {
+    font-family: 'Scheherazade New', serif;
+    font-size: 20px;
+    color: var(--rust-light);
+    line-height: 2;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .hadith-box .hadith-ref {
+    font-family: 'Amiri', serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ===== SCHOLAR CARD ===== */
+  .scholar-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin: 24px 0;
+    box-shadow: 0 2px 12px rgba(154,122,46,0.08);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .scholar-card:hover {
+    box-shadow: 0 4px 24px rgba(154,122,46,0.16);
+  }
+
+  .scholar-name {
+    font-family: 'Amiri', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .scholar-desc {
+    font-family: 'Amiri', serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 10px;
+  }
+
+  .scholar-quote {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15.5px;
+    color: var(--text-body);
+    line-height: 2.1;
+    text-align: justify;
+  }
+
+  .scholar-source {
+    font-family: 'Amiri', serif;
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 10px;
+    display: block;
+    font-style: italic;
+  }
+
+  /* ===== NOTE BOX ===== */
+  .note-box {
+    background: #fffbf0;
+    border: 1px solid var(--gold-pale);
+    border-right: 4px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-family: 'Amiri', serif;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  .note-box strong {
+    color: var(--gold);
+  }
+
+  /* ===== VERIFICATION BADGE ===== */
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f5e9;
+    border: 1px solid #81c784;
+    color: #2e7d32;
+    font-family: 'Amiri', serif;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .needs-nuance {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff8e1;
+    border: 1px solid #ffcc02;
+    color: #f57f17;
+    font-family: 'Amiri', serif;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* ===== SUMMARY GRID ===== */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .summary-card {
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .summary-card.green {
+    background: var(--green-pale);
+    border: 2px solid var(--green-mid);
+  }
+
+  .summary-card.amber {
+    background: #fff8e1;
+    border: 2px solid #f9a825;
+  }
+
+  .summary-card.red {
+    background: #fce4ec;
+    border: 2px solid #c62828;
+  }
+
+  .summary-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .summary-card .card-title {
+    font-family: 'Amiri', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .summary-card.green .card-title { color: var(--green-deep); }
+  .summary-card.amber .card-title { color: #6d4c00; }
+  .summary-card.red .card-title { color: #b71c1c; }
+
+  .summary-card .card-verdict {
+    font-family: 'Amiri', serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin: 6px 0;
+    display: inline-block;
+  }
+
+  .summary-card.green .card-verdict { background: var(--green-mid); color: #fff; }
+  .summary-card.amber .card-verdict { background: #f9a825; color: #fff; }
+  .summary-card.red .card-verdict { background: #c62828; color: #fff; }
+
+  .summary-card .card-note {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 8px;
+    opacity: 0.85;
+  }
+
+  /* ===== DIVIDER ===== */
+  .ornament-divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 12px;
+    margin: 40px 0 20px;
+    opacity: 0.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 60px;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .footer-ornament {
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    opacity: 0.5;
+    letter-spacing: 10px;
+  }
+
+  .footer-text {
+    font-family: 'Amiri', serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+
+  .footer-author {
+    font-family: 'Scheherazade New', serif;
+    font-size: 18px;
+    color: var(--green-deep);
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    body { font-size: 15px; }
+    .intro-box { padding: 20px; }
+    .scholar-card { padding: 16px; }
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: white; }
+    .scholar-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- BACK BUTTON -->
+  <div style="padding: 20px 0 0;">
+    <a href="https://rafhoc.github.io/bahrennoune/index.html" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-deep);
+      color: var(--gold-light);
+      font-family: 'Amiri', serif;
+      font-size: 15px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(30,58,42,0.25);
+      transition: all 0.3s ease;
+    " onmouseover="this.style.background='#2d5a3d'" onmouseout="this.style.background='#1e3a2a'">
+      &#8594; العودة إلى الصفحة الرئيسية
+    </a>
+  </div>
+
+  <!-- TOP ORNAMENT -->
+  <div class="top-ornament">✦ ✦ ✦</div>
+
+  <!-- HEADER -->
+  <header>
+    <span class="series-label">بحث شرعي محكّم</span>
+    <h1>الدعاء عند القبور<br>بين الحقيقة الشرعية والموروث الشعبي</h1>
+    <p class="subtitle">تحقيق وتأصيل من الكتاب والسنة وأقوال الأئمة المتبوعين</p>
+    <p class="author-line">بقلم: <span>حسيني عبد الرفيق</span></p>
+  </header>
+
+  <!-- BISMILLAH -->
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>
+      هذا بحث في مسألة كثر فيها الجدل وتشعّبت فيها الأقوال، وبُنيت على أعرافها موروثات شعبية بالغة العمق. غايتنا هنا ليست التشنيع ولا التبديع، بل الإنصاف والتحقيق: أن نعرض ما قاله العلماء الكبار من أئمة المذاهب المتبوعة، وما دلّت عليه نصوص الكتاب والسنة، ثم نترك للقارئ العاقل أن يرى الحقيقة واضحة ناصعة.
+    </p>
+  </div>
+
+  <!-- ===== SECTION 1: QURAN & SUNNAH ===== -->
+  <div class="section-header">
+    <div class="section-number">١</div>
+    <h2 class="section-title">الأدلة من القرآن الكريم والسنة النبوية</h2>
+  </div>
+
+  <div class="subsection-title">أولاً: من القرآن الكريم</div>
+
+  <p class="body-text">
+    أجمع المفسرون أن الغاية العظمى من بعثة الرسل هي تحقيق توحيد العبادة، ومنها الدعاء الذي وصفه النبي ﷺ بأنه "مخّ العبادة". وقد جاءت النصوص القرآنية صريحة في حصر الدعاء بالله وحده:
+  </p>
+
+  <div class="quran-verse">
+    <span class="quran-label">القرآن الكريم</span>
+    <span class="verse-text">﴿وَأَنَّ الْمَسَاجِدَ لِلَّهِ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا﴾</span>
+    <span class="verse-ref">سورة الجن: الآية 18</span>
+  </div>
+
+  <p class="body-text">
+    وكلمة "أحداً" نكرة في سياق النهي، وهذا يفيد العموم المطلق عند علماء الأصول، فلا نبي مرسل ولا ملك مقرب ولا ولي صالح. وقال سبحانه:
+  </p>
+
+  <div class="quran-verse">
+    <span class="quran-label">القرآن الكريم</span>
+    <span class="verse-text">﴿إِن تَدْعُوهُمْ لَا يَسْمَعُوا دُعَاءَكُمْ وَلَوْ سَمِعُوا مَا اسْتَجَابُوا لَكُمْ ۖ وَيَوْمَ الْقِيَامَةِ يَكْفُرُونَ بِشِرْكِكُمْ﴾</span>
+    <span class="verse-ref">سورة فاطر: الآية 14</span>
+  </div>
+
+  <p class="body-text">
+    وقال جل شأنه في الرد على المشركين الذين كانوا يحتجون بأنهم يقصدون التقرب إلى الله عبر أصحاب القبور:
+  </p>
+
+  <div class="quran-verse">
+    <span class="quran-label">القرآن الكريم</span>
+    <span class="verse-text">﴿أَلَا لِلَّهِ الدِّينُ الْخَالِصُ ۚ وَالَّذِينَ اتَّخَذُوا مِن دُونِهِ أَوْلِيَاءَ مَا نَعْبُدُهُمْ إِلَّا لِيُقَرِّبُونَا إِلَى اللَّهِ زُلْفَىٰ﴾</span>
+    <span class="verse-ref">سورة الزمر: الآية 3</span>
+  </div>
+
+  <p class="body-text">
+    لاحظ — يرحمك الله — أن هؤلاء المشركين الذين نزل القرآن في ردهم لم يكونوا يظنون أنهم يعبدون أصحاب الأضرحة استقلالاً، بل كانوا يحتجون بأنهم وسيلة وشفاعة إلى الله. فكانت حجتهم هي عين حجة من يدعو عند القبور اليوم. فانظر كيف ردّ عليهم الله تعالى.
+  </p>
+
+  <div class="subsection-title">ثانياً: من السنة النبوية المطهرة</div>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«لَعَنَ اللَّهُ اليَهُودَ وَالنَّصَارَى اتَّخَذُوا قُبُورَ أَنْبِيَائِهِمْ مَسَاجِدَ»</span>
+    <span class="hadith-ref">رواه البخاري ومسلم، وكان هذا آخر ما تكلم به النبي ﷺ في مرض موته — متفق عليه</span>
+  </div>
+
+  <p class="body-text">
+    والعلماء كالإمام الشافعي والنووي وغيرهم نصوا على أن معنى "اتخاذها مساجد" يشمل الصلاة عندها وقصدها بالدعاء والطلب. وقال ﷺ في وصيته قبيل وفاته:
+  </p>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«لا تتخذوا قبري عيداً، وصلّوا عليَّ فإنَّ صلاتكم تبلغني حيث كنتم»</span>
+    <span class="hadith-ref">رواه أبو داود بإسناد حسن، وصحّحه الألباني — أبو داود (2042)</span>
+  </div>
+
+  <p class="body-text">
+    والعيد هو المكان الذي يُقصد في أوقات معيّنة للعبادة أو التبرك أو الدعاء، فنهى النبي ﷺ عن ذلك سداً للذريعة. وقال ﷺ أيضاً:
+  </p>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«اللهم لا تجعل قبري وثناً يُعبد. اشتدَّ غضب الله على قومٍ اتخذوا قبور أنبيائهم مساجد»</span>
+    <span class="hadith-ref">رواه مالك في الموطأ ومن طريقه ابن سعد، وصحّحه المحدثون</span>
+  </div>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«الدعاء هو العبادة»</span>
+    <span class="hadith-ref">رواه الترمذي وأبو داود وصحّحاه، وتلا النبي ﷺ قوله تعالى: ﴿وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ﴾</span>
+  </div>
+
+  <p class="body-text">
+    وهذا الحديث يعني أن صرف الدعاء لغير الله هو صرف للعبادة لغير الله بالنصوص المتواترة، لا بمجرد الاستنتاج.
+  </p>
+
+  <!-- ===== SECTION 2: SAHABA ===== -->
+  <div class="section-header">
+    <div class="section-number">٢</div>
+    <h2 class="section-title">هدي الصحابة الكرام</h2>
+  </div>
+
+  <p class="body-text">
+    لم يثبت قط عن أبي بكر الصديق ولا عمر بن الخطاب ولا عثمان بن عفان ولا علي بن أبي طالب رضي الله عنهم أجمعين، ولا عن سائر كبار الصحابة، أنهم ذهبوا إلى قبر النبي ﷺ أو إلى قبور شهداء أُحد أو أهل البقيع ليدعوا الله لأنفسهم عند تلك القبور.
+  </p>
+
+  <div class="subsection-title">حادثة الاستسقاء الكبرى</div>
+
+  <p class="body-text">
+    روى البخاري في صحيحه أن أصاب الناسَ قحطٌ شديد في عهد عمر بن الخطاب، فلم يذهب عمر رضي الله عنه بالصحابة إلى قبر النبي ﷺ ليدعوا هناك رغم أن قبره الشريف على مسافة خطوات — بل خرج بهم إلى المصلى وتوسّل بدعاء العباس بن عبد المطلب عمّ النبي لأنه حيٌّ حاضر يُرجى دعاؤه، وقال:
+  </p>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«اللهم إنا كنا نتوسل إليك بنبينا فتسقينا، وإنا نتوسل إليك بعم نبينا فاسقنا»</span>
+    <span class="hadith-ref">رواه البخاري في صحيحه — كتاب الاستسقاء (1010)</span>
+  </div>
+
+  <p class="body-text">
+    قال ابن حجر العسقلاني في فتح الباري شارحاً هذا الأثر: انتقال عمر من التوسل بالنبي ﷺ إلى التوسل بالعباس لا يعني إهمال النبي، بل يعني أن التوسل المقصود هو طلب الدعاء من الحي القادر على الدعاء، لا قصد القبر والدعاء عنده. فلو كان قصد القبر للدعاء مشروعاً لكان قبر النبي ﷺ أولى البقاع بذلك.
+  </p>
+
+  <div class="subsection-title">أثر ابن عمر رضي الله عنهما</div>
+
+  <p class="body-text">
+    روى الإمام مالك في الموطأ عن عبد الله بن دينار أن ابن عمر رضي الله عنهما كان إذا قدم من سفر أتى المسجد وصلّى فيه ثم أتى القبر فسلّم على النبي ﷺ. وهذا محلّ اتفاق: السلام والصلاة على النبي عند قبره مشروعان. أما قصد القبر للدعاء لنفسه فلا يثبت عن ابن عمر ولا عن غيره من الصحابة ما يدل على هذا بصريح، والإجمال لا يُقيَّد به المجمل.
+  </p>
+
+  <!-- ===== SECTION 3: SCHOLARS ===== -->
+  <div class="section-header">
+    <div class="section-number">٣</div>
+    <h2 class="section-title">تحقيق أقوال الأئمة المتبوعين</h2>
+  </div>
+
+  <p class="body-text">
+    نعرض هنا أقوال الأئمة محقَّقةً موثَّقةً، مع التنبيه على ما أُوهم فيه أو زيد أو نُسب بغير إسناد ثابت:
+  </p>
+
+  <!-- NAWAWI -->
+  <div class="needs-nuance">⚑ موثَّق مع تنبيه</div>
+  <div class="scholar-card">
+    <div class="scholar-name">الإمام النووي (631—676 هـ)</div>
+    <div class="scholar-desc">شافعي المذهب، إمام في الفقه والحديث والتزكية، مرجع الأشاعرة والشافعية في المتأخرين</div>
+    <p class="scholar-quote">
+      ذكر الإمام النووي في <em>المجموع شرح المهذب</em> (5/311) نقلاً عن الحافظ أبي موسى الأصفهاني وعن الإمام الزعفراني: "لا يستلم القبر بيده ولا يقبله. وعلى هذا مضت السنة. واستلام القبور وتقبيلها الذي يفعله العوام الآن من المبتدعات المنكرة شرعاً، ينبغي تجنّب فعله وينهى فاعله." وزاد: "فمن قصد السلام على ميت سلّم عليه من قِبل وجهه، وإذا أراد الدعاء تحوَّل عن موضعه واستقبل القبلة."
+      <br><br>
+      وقال كذلك في كتاب <em>الإيضاح في المناسك</em>: "لا يغترّ بكثرة العوام الفاعلين لذلك، فإن الاقتداء إنما يكون بالعلماء."
+    </p>
+    <span class="scholar-source">المصدر: المجموع شرح المهذب، دار الفكر، (5/311) — وقد تحققنا منه</span>
+  </div>
+
+  <div class="note-box">
+    <strong>تنبيه تحقيقي:</strong> نسب بعضهم للنووي قوله بجواز "استقبال القبر" وقت الدعاء، والصحيح أن الذي يثبت عنه صريحاً هو خلاف ذلك كما في النص الوارد أعلاه. أما من قال باستقبال القبر للسلام عليه فهذا مسألة أخرى يتنازع فيها الأئمة الأربعة، لا علاقة له بقصد القبر لدعاء الله عنده لطلب الحوائج.
+  </div>
+
+  <!-- IBN HAJAR -->
+  <div class="verified-badge">✓ موثَّق</div>
+  <div class="scholar-card">
+    <div class="scholar-name">الإمام ابن حجر الهيتمي (909—974 هـ)</div>
+    <div class="scholar-desc">شافعي، من كبار الفقهاء المتأخرين، صاحب الفتاوى الكبرى والزواجر</div>
+    <p class="scholar-quote">
+      قال في كتابه <em>الزواجر عن اقتراف الكبائر</em>: إن اتخاذ القبور مساجد أو إيقاد السرج عليها أو قصدها للصلاة والدعاء هو من أبواب الفتنة الكبرى التي نهى عنها النبي ﷺ، لأنها ذريعة إلى الشرك وتعظيم المخلوق بما لا يليق إلا بالخالق. وأوضح أن النهي النبوي عن اتخاذ القبور مساجد قد صرّح بعموميته العلماء قاطبةً سواء كان الميت صالحاً أو غيره.
+    </p>
+    <span class="scholar-source">الزواجر عن اقتراف الكبائر، دار المعرفة، الكبيرة السبعة والخمسون</span>
+  </div>
+
+  <!-- GHAZALI -->
+  <div class="verified-badge">✓ موثَّق</div>
+  <div class="scholar-card">
+    <div class="scholar-name">الإمام الغزالي (450—505 هـ)</div>
+    <div class="scholar-desc">شافعي، حجة الإسلام، صاحب إحياء علوم الدين، مرجع التصوف السنّي</div>
+    <p class="scholar-quote">
+      صرّح الإمام الغزالي في كتابه <em>إحياء علوم الدين</em> بأن "مس القبور وتقبيلها عادة اليهود والنصارى." وأوضح أن المقصد الشرعي الصحيح من زيارة القبور هو ثلاثة أشياء: الاعتبار بالموت، والدعاء للميت، والتذكر بالآخرة — لا قصد البقعة لطلب الحوائج الشخصية من الله عندها، لأن هذا ليس له أصل في هدي السلف.
+    </p>
+    <span class="scholar-source">إحياء علوم الدين، دار المعرفة بيروت، كتاب آداب السفر وزيارة القبور</span>
+  </div>
+
+  <!-- IBN AL-HAJ -->
+  <div class="verified-badge">✓ موثَّق</div>
+  <div class="scholar-card">
+    <div class="scholar-name">الإمام ابن الحاج المالكي (ت. 737 هـ)</div>
+    <div class="scholar-desc">مالكي، من كبار علماء القرن الثامن، صاحب المدخل الشهير في رد البدع</div>
+    <p class="scholar-quote">
+      أطنب ابن الحاج في كتابه <em>المدخل</em> في ذكر البدع التي تحدث عند القبور، وذكر أن السلف الصالح لم يكونوا يُطيلون الوقوف عند القبور للدعاء لأنفسهم، بل كانوا يسلّمون ثم يمضون في طريقهم. وأكد أن اعتقاد "بركة البقعة" عند القبور لأجل الدعاء هو من المحدثات التي لم تكن عليها القرون المفضّلة الأولى.
+    </p>
+    <span class="scholar-source">المدخل، دار التراث، الجزء الأول، فصل في زيارة القبور وما أُحدث فيها</span>
+  </div>
+
+  <!-- SHATIBI -->
+  <div class="verified-badge">✓ موثَّق</div>
+  <div class="scholar-card">
+    <div class="scholar-name">الإمام أبو إسحاق الشاطبي (ت. 790 هـ)</div>
+    <div class="scholar-desc">مالكي، صاحب الموافقات والاعتصام، إمام مقاصد الشريعة ورد البدع</div>
+    <p class="scholar-quote">
+      قال في <em>الاعتصام</em>: إن تخصيص القبور بالدعاء أو اعتقاد أن الدعاء عندها أقرب للإجابة هو من "البدع الإضافية" التي لم يدلّ عليها دليل من الشرع، وهي تضاهي العبادات المشروعة بغير مستند. وأوضح أن الأصل في العبادات التوقيف، والدعاء عبادة، فلا يُخصَّص مكانٌ لها إلا بدليل، ولا دليل على تخصيص القبور.
+    </p>
+    <span class="scholar-source">الاعتصام، دار ابن الجوزي، الجزء الأول، فصل في البدع الإضافية</span>
+  </div>
+
+  <!-- ===== SECTION 4: ADDITIONAL PROOFS ===== -->
+  <div class="section-header">
+    <div class="section-number">٤</div>
+    <h2 class="section-title">أدلة إضافية يقلّ ذكرها</h2>
+  </div>
+
+  <div class="subsection-title">ما رواه الإمام أحمد واتفاق الأئمة الأربعة على استقبال القبلة عند الدعاء</div>
+
+  <p class="body-text">
+    نقل ابن تيمية في <em>مجموع الفتاوى</em> (1/228) ما يُعدّ من أوثق ما في هذه المسألة: "فإنهم [الأئمة] متفقون على أن من سلّم على النبي ﷺ ثم أراد الدعاء فإنه يستقبل القبلة." وقد روى إسحاق بن منصور عن الإمام أحمد قال: "إذا دُفن أتاه وليُّه من أحبَّه فسلَّم عليه من قِبل وجهه، ثم استقبل القبلة فدعا له ثم انصرف." رواه ابن منصور في مسائله (819).
+  </p>
+
+  <div class="subsection-title">موقف الإمام مالك الموثَّق</div>
+
+  <div class="needs-nuance">⚑ مسألة خلافية دقيقة</div>
+  <p class="body-text">
+    نُسب إلى الإمام مالك — في رواية شهيرة عند القاضي عياض في <em>الشفا</em> — أنه أجاز استقبال القبر عند الدعاء. غير أن المحققين من العلماء بحثوا في إسناد هذه الرواية فوجدوا فيها محمد بن حميد وهو ضعيف عند أهل الحديث بإجماع. وقد قال القاضي عياض في <em>المبسوط</em> نصّاً صريحاً عن مالك: <strong>"لا أرى أن يقف عند قبر النبي ﷺ ويدعو، ولكن يسلم ويمضي."</strong>
+    <br><br>
+    بل بلغ من تحرّج مالك رضي الله عنه في هذا الباب أنه كره أن يقول الرجل: "زرت قبر النبي ﷺ"، وكره تتبع الآثار التي بالمدينة النبوية. فكيف يُنسب إليه استحباب قصد القبر للدعاء عنده؟ واتفق أصحابه أنه لا يستقبل القبر عند الدعاء وإن اختلفوا في مسألة استقباله وقت السلام.
+  </p>
+
+  <div class="subsection-title">نص الإمام الشافعي في الأم</div>
+
+  <div class="verified-badge">✓ موثَّق</div>
+  <p class="body-text">
+    قال الإمام الشافعي في كتابه <em>الأم</em>: "أكره تعظيم القبور وتجصيصها والبناء عليها." وقال: "وقد رأيت من الولاة من يهدم ما بُني عليها." واتفق أصحابه على كراهة الصلاة إلى القبور والدعاء عندها تعظيماً. قال النووي ناقلاً عن أصحاب الشافعي في المجموع: "اتفقت نصوص الشافعي والأصحاب على كراهة بناء مسجد على القبر سواء كان الميت مشهوراً بالصلاح أو غيره، لعموم الأحاديث."
+  </p>
+
+  <div class="subsection-title">حديث أبي هريرة رضي الله عنه</div>
+
+  <div class="hadith-box">
+    <span class="hadith-text">«لا تجعلوا بيوتكم قبوراً، ولا تجعلوا قبري عيداً، وصلّوا عليَّ فإنَّ صلاتكم تبلغني حيث كنتم»</span>
+    <span class="hadith-ref">رواه أبو داود (2042) بإسناد حسن، وصحّحه الألباني والأرنؤوط</span>
+  </div>
+
+  <p class="body-text">
+    قال ابن القيم الجوزية في <em>إغاثة اللهفان</em>: "نهاهم أن يتخذوا قبره عيداً أي موسماً يُعتاد قصده والعكوف عنده، فإن ذلك ذريعة إلى اتخاذه وثناً يُعبد." وقال عن الصلاة عليه في أي مكان: إنها تبلغه ﷺ وهذا يُغني عن قصد قبره بالدعاء.
+  </p>
+
+  <!-- ===== SECTION 5: CONSENSUS ===== -->
+  <div class="section-header">
+    <div class="section-number">٥</div>
+    <h2 class="section-title">خلاصة جامعة في الحكم الشرعي</h2>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card green">
+      <div class="card-icon">🤲</div>
+      <div class="card-title">الدعاء للميت</div>
+      <div class="card-verdict">سنة مستحبة</div>
+      <p class="card-note">اللهم ارحمه وتجاوز عنه — هذا هو المقصد الأعظم والمشروع من زيارة القبور باتفاق الأمة</p>
+    </div>
+    <div class="summary-card amber">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">قصد القبر للدعاء لنفسه</div>
+      <div class="card-verdict">بدعة محدثة</div>
+      <p class="card-note">قصد البقعة طلباً للرزق أو الزواج أو الشفاء — لا أصل له في فعل الصحابة، وهو ذريعة للوقوع في المحظور</p>
+    </div>
+    <div class="summary-card red">
+      <div class="card-icon">🚫</div>
+      <div class="card-title">دعاء صاحب القبر مباشرة</div>
+      <div class="card-verdict">شرك بالله</div>
+      <p class="card-note">"يا فلان اشفِ مريضي" — صرف الدعاء لغير الله شرك أكبر بإجماع علماء الأمة من أول يوم</p>
+    </div>
+  </div>
+
+  <div class="ornament-divider">❧ ❧ ❧</div>
+
+  <!-- ===== CLOSING ===== -->
+  <div class="section-header">
+    <div class="section-number">٦</div>
+    <h2 class="section-title">خاتمة وتأمّل</h2>
+  </div>
+
+  <p class="body-text">
+    إن ما نراه اليوم من التمسح بالأضرحة واعتقاد استجابة الدعاء عند قبور الصالحين إنما هو مما استحدثه الناس في عصور التأخر، بُني على منامات أو حكايات لا تقوم بها حجة شرعية. والمحدِّث يقول: الحكاية لا تُعارَض بها الرواية، والرواية لا تعارَض بها الآية.
+  </p>
+
+  <p class="body-text">
+    ونصوص الأئمة المتبوعين — مالك والشافعي والنووي وابن الحاج والشاطبي وابن حجر الهيتمي — كلها تنتهي إلى مسلك واحد: تجريد التوحيد، والتحذير من كل ذريعة تفتح باب التعظيم المنهي عنه، والسير على هدي الصحابة الكرام الذين لم يكونوا يقصدون القبور للدعاء لأنفسهم.
+  </p>
+
+  <div class="intro-box">
+    <p>
+      وآخر دعوانا أن الحمد لله رب العالمين، وصلى الله وسلم على نبينا محمد، وعلى آله وصحبه أجمعين. وما توفيقنا إلا بالله، وهو حسبنا ونعم الوكيل.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-ornament">✦ ✦ ✦</div>
+    <p class="footer-text">
+      هذا البحث مُعدٌّ للقارئ طالبِ الحق، وليس للتشنيع ولا للتفريق<br>
+      والعلماء متفقون: الإخلاص لله يسبق كل علم، وحسن الظن بالمسلمين فرض لا نافلة
+    </p>
+    <p class="footer-author">حسيني عبد الرفيق</p>
+    <p class="footer-text" style="margin-top:8px; font-size:13px;">
+      المصادر المعتمدة: المجموع للنووي — الزواجر لابن حجر الهيتمي — المدخل لابن الحاج —
+      الاعتصام للشاطبي — مجموع الفتاوى لابن تيمية — فتح الباري لابن حجر العسقلاني —
+      صحيح البخاري ومسلم — سنن أبي داود
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
